@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://brx1my3d7k5r"]
+
+[ext_resource type="Texture2D" uid="uid://d3oatibfpcn42" path="res://Assets/Atlas/frankenpack-reloaded.png" id="1_64s0l"]
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_fuyhs"]
+
+[sub_resource type="Animation" id="Animation_jf21l"]
+resource_name = "walk_left"
+
+[sub_resource type="Animation" id="Animation_csdi1"]
+resource_name = "walk_down"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xsl4"]
+_data = {
+"walk_down": SubResource("Animation_csdi1"),
+"walk_left": SubResource("Animation_jf21l")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2hbf"]
+size = Vector2(20, 46)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_fuyhs")
+speed = 150
+
+[node name="Graphics" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0xsl4")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2, 17)
+shape = SubResource("RectangleShape2D_k2hbf")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(2, 1)
+texture = ExtResource("1_64s0l")
+region_enabled = true
+region_rect = Rect2(1086.36, 162.328, 16.8875, 21.0296)
+
+[node name="Legs" type="Sprite2D" parent="."]
+position = Vector2(-1, 31)
+texture = ExtResource("1_64s0l")
+region_enabled = true
+region_rect = Rect2(870.026, 969.338, 35.9088, 26.9861)
+
+[node name="Arm_L" type="Sprite2D" parent="."]
+position = Vector2(5, 21)
+texture = ExtResource("1_64s0l")
+region_enabled = true
+region_rect = Rect2(99.1737, 858.101, 30.5464, 47.1363)
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(1, 14)
+texture = ExtResource("1_64s0l")
+region_enabled = true
+region_rect = Rect2(1387.14, 281.162, 23.1478, 27.8961)
+
+[node name="Arm_R" type="Sprite2D" parent="."]
+position = Vector2(-6, 18)
+texture = ExtResource("1_64s0l")
+region_enabled = true
+region_rect = Rect2(162.389, 762.009, 24.3349, 28.2918)
