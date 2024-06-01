@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://brx1my3d7k5r"]
 
-[ext_resource type="Script" path="res://Scenes/player.gd" id="1_fuyhs"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_8rpn8"]
 [ext_resource type="Texture2D" uid="uid://b3b5tnvyses8s" path="res://Assets/Atlas/frankenpack-reloaded.png" id="2_80gto"]
 
 [sub_resource type="Animation" id="Animation_csdi1"]
@@ -19,7 +19,7 @@ _data = {
 size = Vector2(20, 46)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_fuyhs")
+script = ExtResource("1_8rpn8")
 speed = 150
 
 [node name="Graphics" type="AnimationPlayer" parent="."]
