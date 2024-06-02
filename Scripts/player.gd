@@ -1,9 +1,12 @@
 extends CharacterBody2D
 @export var speed = 300
 @onready var animations = $Graphics
+@export var total_hp = 6
+var current_hp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	current_hp = total_hp
 	pass # Replace with function body.
 
 
@@ -38,3 +41,16 @@ func handle_input():
 		scale.x = -1
 	else:
 		scale.x = 1
+		
+	if Input.is_action_just_pressed("Attack"):
+		pass
+
+
+func take_dmg(dmg):
+	current_hp -= dmg
+	if current_hp <= 0:
+		die()
+
+
+func die():
+	get_tree().reload_current_scene()

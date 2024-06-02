@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://brx1my3d7k5r"]
+[gd_scene load_steps=8 format=3 uid="uid://brx1my3d7k5r"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8rpn8"]
 [ext_resource type="Texture2D" uid="uid://b3b5tnvyses8s" path="res://Assets/Atlas/frankenpack-reloaded.png" id="2_80gto"]
@@ -17,6 +17,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2hbf"]
 size = Vector2(20, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfmsg"]
+size = Vector2(28, 48)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8rpn8")
@@ -61,3 +64,16 @@ position = Vector2(-6, 18)
 texture = ExtResource("2_80gto")
 region_enabled = true
 region_rect = Rect2(162.389, 762.009, 24.3349, 28.2918)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
+position = Vector2(2, 17)
+shape = SubResource("RectangleShape2D_k2hbf")
+
+[node name="AttackBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+position = Vector2(14, 18)
+shape = SubResource("RectangleShape2D_bfmsg")

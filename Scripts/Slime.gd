@@ -1,6 +1,8 @@
 extends CharacterBody2D
 @onready var Player = get_node("/root/World/Game Manager/Player")
 @export var speed = 100
+@export var damage = 2
+@export var total_hp = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
