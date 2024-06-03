@@ -153,7 +153,7 @@ animations = [{
 size = Vector2(18, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4vex"]
-size = Vector2(18, 11)
+size = Vector2(23, 15)
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_qxyyx")
@@ -172,5 +172,7 @@ shape = SubResource("RectangleShape2D_y2iy6")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 1.5)
+position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_g4vex")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

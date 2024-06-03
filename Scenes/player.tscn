@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8rpn8"]
 [ext_resource type="Texture2D" uid="uid://b3b5tnvyses8s" path="res://Assets/Atlas/frankenpack-reloaded.png" id="2_80gto"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2hbf"]
+size = Vector2(23, 11)
+
 [sub_resource type="Animation" id="Animation_csdi1"]
 resource_name = "walk_down"
 
@@ -15,15 +18,21 @@ _data = {
 "walk_left": SubResource("Animation_jf21l")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2hbf"]
-size = Vector2(20, 46)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfmsg"]
 size = Vector2(28, 48)
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, 15)
 script = ExtResource("1_8rpn8")
 speed = 150
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
+position = Vector2(2, 17)
+shape = SubResource("RectangleShape2D_k2hbf")
 
 [node name="Graphics" type="AnimationPlayer" parent="."]
 libraries = {
@@ -31,48 +40,40 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(2, 17)
 shape = SubResource("RectangleShape2D_k2hbf")
 
 [node name="Head" type="Sprite2D" parent="."]
-position = Vector2(2, 1)
+position = Vector2(-0.5, -35.5)
 texture = ExtResource("2_80gto")
 region_enabled = true
 region_rect = Rect2(1086.36, 162.328, 16.8875, 21.0296)
 
 [node name="Legs" type="Sprite2D" parent="."]
-position = Vector2(-1, 31)
+position = Vector2(-3.5, -5.5)
 texture = ExtResource("2_80gto")
 region_enabled = true
 region_rect = Rect2(870.026, 969.338, 35.9088, 26.9861)
 
 [node name="Arm_L" type="Sprite2D" parent="."]
-position = Vector2(5, 21)
+position = Vector2(2.5, -15.5)
 texture = ExtResource("2_80gto")
 region_enabled = true
 region_rect = Rect2(99.1737, 858.101, 30.5464, 47.1363)
 
 [node name="Body" type="Sprite2D" parent="."]
-position = Vector2(1, 14)
+position = Vector2(-1.5, -22.5)
 texture = ExtResource("2_80gto")
 region_enabled = true
 region_rect = Rect2(1387.14, 281.162, 23.1478, 27.8961)
 
 [node name="Arm_R" type="Sprite2D" parent="."]
-position = Vector2(-6, 18)
+position = Vector2(-8.5, -18.5)
 texture = ExtResource("2_80gto")
 region_enabled = true
 region_rect = Rect2(162.389, 762.009, 24.3349, 28.2918)
 
-[node name="Hurtbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
-position = Vector2(2, 17)
-shape = SubResource("RectangleShape2D_k2hbf")
-
 [node name="AttackBox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
 position = Vector2(14, 18)
