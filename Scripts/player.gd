@@ -38,10 +38,15 @@ func animate_player():
 func handle_input():
 	var direction = Input.get_vector("Left","Right","Up","Down")
 	velocity = direction * speed
-	if velocity.x < 0:
-		scale.x = -1
+	if(direction.x < 0):
+		animations.flip_h = true
+	if(direction.x > 0):
+		animations.flip_h = false
+	if(direction != Vector2.ZERO):
+		animations.play("Walk")
 	else:
-		scale.x = 1
+		animations.play("Idle")
+		
 		
 	if Input.is_action_just_pressed("Attack"):
 		pass
