@@ -149,15 +149,17 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2iy6"]
-size = Vector2(18, 11)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mq8v"]
+radius = 5.5
+height = 22.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4vex"]
-size = Vector2(23, 15)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4816"]
+radius = 9.5
+height = 25.0
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_qxyyx")
-speed = 50
+speed = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pcpfm")
@@ -166,13 +168,15 @@ autoplay = "Idle"
 frame_progress = 0.0624775
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
-shape = SubResource("RectangleShape2D_y2iy6")
+position = Vector2(3.55271e-15, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0mq8v")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-0.5, 1.5)
-shape = SubResource("RectangleShape2D_g4vex")
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_d4816")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
