@@ -4,7 +4,7 @@ class_name Player
 @onready var animations = $Graphics
 @export var total_hp = 6
 @onready var current_hp = total_hp
-@export var attack_dmg = 3
+@export var attack_dmg = 2
 var gold = 0
 var isHurt = false
 var isAttacking = false
@@ -39,6 +39,14 @@ func handle_input():
 		
 	if Input.is_action_just_pressed("Attack"):
 		animations.play("Attack_01")
+		if animations.flip_h:
+			for area in $Hurtbox_left.get_overlapping_areas():
+				if area.get_parent() is Enemy:
+					area.get_parent().take_damage(attack_dmg)
+		else:
+			for area in $Hurtbox_right.get_overlapping_areas():
+				if area.get_parent() is Enemy:
+					area.get_parent().take_damage(attack_dmg)
 		#meleeHurtBox = "Hurtbox_" + Input.actio
 		#for area in meleeHurtBox.get_overlapping_areas():
 			#if area is 

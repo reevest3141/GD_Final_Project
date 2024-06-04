@@ -210,7 +210,6 @@ height = 10.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 15)
-platform_on_leave = 2
 script = ExtResource("1_8rpn8")
 speed = 150
 

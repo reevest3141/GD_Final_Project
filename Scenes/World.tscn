@@ -11,10 +11,9 @@
 [node name="Game Manager" type="Node2D" parent="."]
 
 [node name="Level1" parent="Game Manager" instance=ExtResource("1_ecf8m")]
-position = Vector2(-91, -24)
 
 [node name="Player" parent="Game Manager" instance=ExtResource("2_urow0")]
-position = Vector2(89, 118)
+position = Vector2(45, 56)
 
 [node name="Camera2D" type="Camera2D" parent="Game Manager/Player"]
 zoom = Vector2(4, 4)
