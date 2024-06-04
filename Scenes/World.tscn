@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=4 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
 [ext_resource type="PackedScene" uid="uid://brx1my3d7k5r" path="res://Scenes/player.tscn" id="2_urow0"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="3_0s4nn"]
 
 [node name="World" type="Node2D"]
 
@@ -10,9 +11,11 @@
 [node name="Game Manager" type="Node2D" parent="."]
 
 [node name="Level1" parent="Game Manager" instance=ExtResource("1_ecf8m")]
+position = Vector2(-91, -24)
 
 [node name="Player" parent="Game Manager" instance=ExtResource("2_urow0")]
-position = Vector2(44, 35)
+position = Vector2(89, 118)
 
 [node name="Camera2D" type="Camera2D" parent="Game Manager/Player"]
 zoom = Vector2(4, 4)
+script = ExtResource("3_0s4nn")

@@ -24,7 +24,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func animate_player():
-	animations.flip_h = (velocity.x < 0)
+	animations.flip_h = true if velocity.x < 0 else false if velocity.x > 0 else animations.flip_h
+
 	if (isAttacking || isHurt):
 		pass
 	elif velocity.length() == 0:
