@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 window/size/mode=2
 
+[dotnet]
+
+project/assembly_name="GD Final Project"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -66,3 +70,4 @@ Attack={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="gl_compatibility"
