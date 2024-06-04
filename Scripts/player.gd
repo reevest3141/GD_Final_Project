@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 @export var speed = 300
 @onready var animations = $Graphics
 @export var total_hp = 6
@@ -37,10 +38,13 @@ func handle_input():
 		
 	if Input.is_action_just_pressed("Attack"):
 		animations.play("Attack_01")
+		#meleeHurtBox = "Hurtbox_" + Input.actio
+		#for area in meleeHurtBox.get_overlapping_areas():
+			#if area is 
+			#
 		isAttacking = true
 		await animations.animation_finished
 		isAttacking = false
-
 
 func take_damage(dmg):
 	current_hp -= dmg
