@@ -5,7 +5,8 @@ extends CharacterBody2D
 @onready var current_hp = total_hp
 @export var attack_dmg = 3
 var gold = 0
-var anim_frames = 0
+var isHurt = false
+var isAttacking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,14 +21,12 @@ func _physics_process(delta):
 	animate_player()
 	handle_input()
 	move_and_slide()
-	if anim_frames > 0:
-		anim_frames -= delta
 	
 func animate_player():
 	animations.flip_h = (velocity.x < 0)
-	if anim_frames > 0:
-		return
-	if velocity.length() == 0:
+	if (isAttacking || isHurt):
+		pass
+	elif velocity.length() == 0:
 		animations.play("Idle")
 	else:
 		animations.play("Walk")
@@ -38,16 +37,19 @@ func handle_input():
 		
 	if Input.is_action_just_pressed("Attack"):
 		animations.play("Attack_01")
-		anim_frames = 6
-		pass
+		isAttacking = true
+		await animations.animation_finished
+		isAttacking = false
 
 
 func take_damage(dmg):
-	animations.play("Hurt")
-	anim_frames = 4
 	current_hp -= dmg
 	if current_hp <= 0:
 		die()
+	animations.play("Hurt")
+	isHurt = true
+	await animations.animation_finished
+	isHurt = false
 
 
 func die():
