@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animations = $Graphics
 @export var total_hp = 6
 @onready var current_hp = total_hp
+@export var attack_dmg = 3
 var gold = 0
 
 # Called when the node enters the scene tree for the first time.
