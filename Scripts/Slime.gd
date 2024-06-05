@@ -33,18 +33,19 @@ func update_velocity():
 
 func take_damage(dmg):
 	current_hp -= dmg
-	if current_hp <= 0:
-		player_character.update_gold(gold)
-		queue_free()
 	animations.play("Hurt")
 	isHurt = true
 	await animations.animation_finished
 	isHurt = false
+	if current_hp <= 0:
+		player_character.update_gold(gold)
+		queue_free()
+
 
 
 
 func _on_hitbox_body_entered(body):
-	if body is Player:
+	if body is Player && !isHurt:
 		animations.play("Attack")
 		isAttacking = true
 		await animations.animation_finished
