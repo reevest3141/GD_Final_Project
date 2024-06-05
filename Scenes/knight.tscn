@@ -20,8 +20,8 @@ size = Vector2(22, 27)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_sh7j1")
-animation = &"Attack_1"
-frame_progress = 0.283511
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]
 

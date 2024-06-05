@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=5 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
 [ext_resource type="PackedScene" uid="uid://brx1my3d7k5r" path="res://Scenes/soldier.tscn" id="2_urow0"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_0s4nn"]
+[ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
 
 [node name="World" type="Node2D"]
 
@@ -42,3 +43,6 @@ position = Vector2(45, 56)
 [node name="Camera2D" type="Camera2D" parent="Game Manager/Player"]
 zoom = Vector2(4, 4)
 script = ExtResource("3_0s4nn")
+
+[node name="NPC_1" parent="Game Manager" instance=ExtResource("5_obl60")]
+position = Vector2(129, 64)
