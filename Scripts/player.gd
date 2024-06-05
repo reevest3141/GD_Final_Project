@@ -17,7 +17,13 @@ var hittables_left = []
 func _ready():
 	HP_ui.set_text("HP: " + str(current_hp))
 	gold_ui.set_text("Gold: " + str(gold))
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 #hi
+
+func _on_dialogic_signal(argument: String):
+	if argument == "Pay for inn":
+		update_gold(-5)
+		heal(total_hp)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -84,6 +90,11 @@ func update_gold(amt):
 	gold_ui.set_text("Gold: " + str(gold))
 
 
+func heal(amt):
+	current_hp += amt
+	if current_hp >= total_hp:
+		current_hp = total_hp
+	HP_ui.set_text("HP: " + str(current_hp))
 #func _on_hurtbox_left_body_entered(body):
 	#if body is Area2D:
 		#hittables_left.append(body)

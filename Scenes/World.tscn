@@ -39,6 +39,8 @@ text = "Gold:"
 
 [node name="Player" parent="Game Manager" instance=ExtResource("2_urow0")]
 position = Vector2(45, 56)
+total_hp = 6
+attack_dmg = 2
 
 [node name="Camera2D" type="Camera2D" parent="Game Manager/Player"]
 zoom = Vector2(4, 4)

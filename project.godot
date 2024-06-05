@@ -28,7 +28,7 @@ directories/dtl_directory={
 "NPC_1_timeline": "res://Dialogic/NPC_1_timeline.dtl"
 }
 layout/style_list=[]
-layout/default_style="Default"
+layout/default_style=""
 variables={}
 
 [display]
