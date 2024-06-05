@@ -125,7 +125,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_01",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -142,7 +142,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -208,16 +208,19 @@ height = 18.0
 radius = 2.0
 height = 10.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="soldier" type="CharacterBody2D"]
 position = Vector2(0, 15)
+motion_mode = 1
 script = ExtResource("1_8rpn8")
-speed = 150
+speed = 100
 
 [node name="Graphics" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -7)
 sprite_frames = SubResource("SpriteFrames_h4dyv")
-animation = &"Idle"
+animation = &"Attack_01"
 autoplay = "Idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="Hurtbox_left" type="Area2D" parent="."]
 
@@ -242,3 +245,8 @@ shape = SubResource("CapsuleShape2D_jst7w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_right"]
 position = Vector2(11, -7)
 shape = SubResource("RectangleShape2D_bfmsg")
+
+[connection signal="body_entered" from="Hurtbox_left" to="." method="_on_hurtbox_left_body_entered"]
+[connection signal="body_exited" from="Hurtbox_left" to="." method="_on_hurtbox_left_body_exited"]
+[connection signal="body_entered" from="Hurtbox_right" to="." method="_on_hurtbox_right_body_entered"]
+[connection signal="body_exited" from="Hurtbox_right" to="." method="_on_hurtbox_right_body_exited"]

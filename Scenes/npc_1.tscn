@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl4f03x16svpo"]
+
+[ext_resource type="Script" path="res://Scripts/NPC_1.gd" id="1_ttvn2"]
+[ext_resource type="PackedScene" uid="uid://bqnyu3mpgjaxg" path="res://Scenes/knight.tscn" id="2_hb603"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bchr1"]
+radius = 19.105
+
+[node name="NPC_1" type="Node2D"]
+script = ExtResource("1_ttvn2")
+
+[node name="knight" parent="." instance=ExtResource("2_hb603")]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bchr1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
