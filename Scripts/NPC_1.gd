@@ -19,3 +19,10 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body is Player:
 		active = false
+
+func _input(event):
+	if !active or Dialogic.current_timeline != null:
+		pass
+		
+	if event.is_action_pressed("Interact"):
+		Dialogic.start("NPC_1_timeline")
