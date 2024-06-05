@@ -1,8 +1,14 @@
 extends Camera2D
-const LEVEL_1 = preload("res://Scenes/level_1.tscn/")
-# Called when the node enters the scene tree for the first time.
+
+@onready var tilemap = $"../../Level1/TileMap"
+
+
 func _ready():
-	pass # Replace with function body.
+	var mapRect = tilemap.get_used_rect()
+	var tileSize = tilemap.cell_quadrant_size
+	var worldSize = mapRect.size * tileSize
+	limit_right = worldSize.x
+	limit_bottom = worldSize.y
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
