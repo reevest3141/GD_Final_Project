@@ -227,9 +227,9 @@ position = Vector2(-11, -7)
 shape = SubResource("RectangleShape2D_bfmsg")
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
 position = Vector2(-1, -9)
 shape = SubResource("CapsuleShape2D_s2foh")
 
