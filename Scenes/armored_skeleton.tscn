@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6mit3fexp4vg"]
+
+[ext_resource type="SpriteFrames" uid="uid://drqpe8l7ra1jr" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Armored Skeleton/armored_skeleton.tres" id="1_r1gbc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eatb8"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n30ed"]
+radius = 2.0
+height = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r36h"]
+size = Vector2(22, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyus8"]
+size = Vector2(22, 27)
+
+[node name="Node2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_r1gbc")
+animation = &"Attack_2"
+frame_progress = 0.486243
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(3, -2)
+shape = SubResource("CapsuleShape2D_eatb8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n30ed")
+
+[node name="Hurtbox_left" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left"]
+position = Vector2(-11, 1)
+shape = SubResource("RectangleShape2D_2r36h")
+
+[node name="Hurtbox_left2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left2"]
+position = Vector2(11, 1)
+shape = SubResource("RectangleShape2D_fyus8")
