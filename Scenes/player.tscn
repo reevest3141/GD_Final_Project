@@ -220,6 +220,7 @@ animation = &"Attack_01"
 autoplay = "Idle"
 
 [node name="Hurtbox_left" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left"]
 position = Vector2(-11, -7)
@@ -228,15 +229,18 @@ shape = SubResource("RectangleShape2D_bfmsg")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(-1, -9)
 shape = SubResource("CapsuleShape2D_s2foh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jst7w")
 
 [node name="Hurtbox_right" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_right"]
 position = Vector2(11, -7)
