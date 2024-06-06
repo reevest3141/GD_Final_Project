@@ -137,6 +137,7 @@ region_rect = Rect2(0, 17.8099, 49.8546, 13.2737)
 [node name="Level1" parent="Game Manager" instance=ExtResource("1_ecf8m")]
 
 [node name="Player" parent="Game Manager" instance=ExtResource("2_urow0")]
+z_index = 5
 position = Vector2(45, 56)
 
 [node name="Camera2D" type="Camera2D" parent="Game Manager/Player"]
