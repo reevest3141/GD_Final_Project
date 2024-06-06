@@ -8,6 +8,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Dialogic.current_timeline != null:
+		$TextBox.visible = false
+	else:
+		$TextBox.visible = active
 	pass
 
 
@@ -22,7 +26,8 @@ func _on_area_2d_body_exited(body):
 
 func _input(event):
 	if !active or Dialogic.current_timeline != null:
-		pass
+		return
 		
 	if event.is_action_pressed("Interact"):
-		Dialogic.start("NPC_1_timeline")
+		var layout = Dialogic.start("NPC_1_timeline")
+		layout.register_character(load("res://Dialogic/NPC_1.dch"), $knight)
