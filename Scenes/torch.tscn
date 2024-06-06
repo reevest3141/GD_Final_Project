@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://3m1a0x2gq413"]
+
+[ext_resource type="SpriteFrames" uid="uid://dncna4nc1eo0t" path="res://Assets/dungeontiles-extended v1.1/torch_frames.tres" id="1_vp48n"]
+
+[node name="Node2D" type="AnimatedSprite2D"]
+z_index = 2
+sprite_frames = ExtResource("1_vp48n")
+animation = &"flicker"
+frame_progress = 0.978249
