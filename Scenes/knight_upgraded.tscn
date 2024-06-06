@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgarciw6f775"]
+
+[ext_resource type="SpriteFrames" uid="uid://b67x3cnpnkjbk" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Knight Templar/knight_upgraded_sprite_animation.tres" id="1_swdyj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0lna6"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d3yf3"]
+radius = 2.0
+height = 10.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rv7l5"]
+size = Vector2(26, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_narfb"]
+size = Vector2(27, 27)
+
+[node name="Node2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_swdyj")
+animation = &"Idle"
+frame_progress = 0.382181
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_0lna6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_d3yf3")
+
+[node name="Hurtbox_left" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left"]
+visible = false
+position = Vector2(-13, 1)
+shape = SubResource("RectangleShape2D_rv7l5")
+
+[node name="Hurtbox_left2" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left2"]
+visible = false
+position = Vector2(13.5, 1)
+shape = SubResource("RectangleShape2D_narfb")

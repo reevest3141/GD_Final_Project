@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://lvsuyk0upeps"]
+
+[ext_resource type="SpriteFrames" uid="uid://ofv05c7oa0io" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Orc/orc_sprite_animations.tres" id="1_a1cop"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8t5wc"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tfq08"]
+radius = 2.0
+height = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkyhx"]
+size = Vector2(22, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr1k2"]
+size = Vector2(22, 27)
+
+[node name="Orc" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_a1cop")
+animation = &"Attack_2"
+frame = 2
+frame_progress = 0.437814
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_8t5wc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tfq08")
+
+[node name="Hurtbox_left" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left"]
+visible = false
+position = Vector2(-11, 1)
+shape = SubResource("RectangleShape2D_pkyhx")
+
+[node name="Hurtbox_left2" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left2"]
+visible = false
+position = Vector2(11, 1)
+shape = SubResource("RectangleShape2D_hr1k2")

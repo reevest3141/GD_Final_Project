@@ -1,23 +1,159 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=6 format=3 uid="uid://cnw6fkk6etnf1"]
 
+[ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
-[ext_resource type="PackedScene" uid="uid://brx1my3d7k5r" path="res://Scenes/player.tscn" id="2_urow0"]
-[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="3_0s4nn"]
+[ext_resource type="PackedScene" uid="uid://brx1my3d7k5r" path="res://Scenes/soldier.tscn" id="2_urow0"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_0s4nn"]
+[ext_resource type="PackedScene" uid="uid://blgmdm0162wd5" path="res://new_level.tscn" id="5_bqkcu"]
+[ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4xw6"]
+atlas = ExtResource("1_3t3x5")
+region = Rect2(288, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuhyg"]
+atlas = ExtResource("1_3t3x5")
+region = Rect2(288, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85qa2"]
+atlas = ExtResource("1_3t3x5")
+region = Rect2(240, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go5u7"]
+atlas = ExtResource("1_3t3x5")
+region = Rect2(192, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr4hw"]
+atlas = ExtResource("1_3t3x5")
+region = Rect2(144, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssdbd"]
+atlas = ExtResource("1_3t3x5")
+region = Rect2(96, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i41b"]
+atlas = ExtResource("1_3t3x5")
+region = Rect2(48, 0, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hxms"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4xw6")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuhyg")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85qa2")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go5u7")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr4hw")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssdbd")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i41b")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}]
 
 [node name="World" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="Gold" type="Label" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -69.0
+offset_right = 63.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Gold:"
+
+[node name="HP_Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="HP" type="AnimatedSprite2D" parent="UI/HP_Control"]
+position = Vector2(150, 2.08165e-12)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_6hxms")
+animation = &"0"
+autoplay = "6"
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/HP_Control/HP"]
+texture = ExtResource("1_3t3x5")
+region_enabled = true
+region_rect = Rect2(0, 17.8099, 49.8546, 13.2737)
+
 [node name="Game Manager" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Level1" parent="Game Manager" instance=ExtResource("1_ecf8m")]
-position = Vector2(-91, -24)
+
+[node name="Area2D" parent="Game Manager/Level1" instance=ExtResource("5_bqkcu")]
+position = Vector2(1489, 255)
 
 [node name="Player" parent="Game Manager" instance=ExtResource("2_urow0")]
-position = Vector2(89, 118)
+y_sort_enabled = true
+position = Vector2(45, 56)
 
 [node name="Camera2D" type="Camera2D" parent="Game Manager/Player"]
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
+limit_left = -95
+limit_top = -130
+limit_right = 1650
+limit_bottom = 640
 position_smoothing_enabled = true
-position_smoothing_speed = 4.0
+position_smoothing_speed = 3.0
 script = ExtResource("3_0s4nn")
+
+[node name="NPC_1" parent="Game Manager" instance=ExtResource("5_obl60")]
+position = Vector2(129, 64)

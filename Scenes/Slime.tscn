@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://dy8vrsjv1038i"]
+[gd_scene load_steps=31 format=3 uid="uid://dy8vrsjv1038i"]
 
 [ext_resource type="Texture2D" uid="uid://6wxr11i30x1m" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Slime/Slime with shadows/Slime-Attack.png" id="1_7xaim"]
 [ext_resource type="Script" path="res://Scripts/Slime.gd" id="1_qxyyx"]
 [ext_resource type="Texture2D" uid="uid://wg1heut7j6rq" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Slime/Slime with shadows/Slime-Idle.png" id="2_ofj37"]
 [ext_resource type="Texture2D" uid="uid://y5fbt0mwdc44" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Slime/Slime with shadows/Slime-Walk.png" id="3_05xmc"]
+[ext_resource type="Texture2D" uid="uid://bme4n2pi7nouj" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Slime/Slime with shadows/Slime-Hurt.png" id="3_41m8r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmr1o"]
 atlas = ExtResource("1_7xaim")
@@ -28,6 +29,22 @@ region = Rect2(400, 0, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xm60a"]
 atlas = ExtResource("1_7xaim")
 region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7rn3"]
+atlas = ExtResource("3_41m8r")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnt31"]
+atlas = ExtResource("3_41m8r")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kmxd"]
+atlas = ExtResource("3_41m8r")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0txbt"]
+atlas = ExtResource("3_41m8r")
+region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2lkq"]
 atlas = ExtResource("2_ofj37")
@@ -98,9 +115,26 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xm60a")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
-"speed": 8.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7rn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnt31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kmxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0txbt")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -145,7 +179,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_osouf")
 }],
 "loop": true,
-"name": &"Walk_right",
+"name": &"Walk",
 "speed": 8.0
 }]
 
@@ -155,28 +189,28 @@ height = 22.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4816"]
 radius = 9.5
-height = 25.0
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_qxyyx")
-speed = 10
+speed = 30
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Graphics" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pcpfm")
-animation = &"Walk_right"
+animation = &"Hurt"
 autoplay = "Idle"
-frame_progress = 0.0624775
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.55271e-15, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0mq8v")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_d4816")
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hitbox_body_entered"]
