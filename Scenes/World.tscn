@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
 [ext_resource type="PackedScene" uid="uid://dv4fald4idl2r" path="res://Scenes/soldier.tscn" id="2_urow0"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_0s4nn"]
-[ext_resource type="PackedScene" uid="uid://dj5kpoew8uot0" path="res://new_level.tscn" id="5_bqkcu"]
+[ext_resource type="PackedScene" uid="uid://dj5kpoew8uot0" path="res://Scenes/new_level.tscn" id="5_bqkcu"]
 [ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
-[ext_resource type="PackedScene" uid="uid://ubjw4it14c6h" path="res://Scenes/npc_2.tscn" id="7_wak06"]
+[ext_resource type="PackedScene" path="res://Scenes/npc_2.tscn" id="7_wak06"]
 [ext_resource type="PackedScene" uid="uid://dy8vrsjv1038i" path="res://Scenes/Slime.tscn" id="8_fbnpi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4xw6"]
@@ -139,11 +139,13 @@ region_rect = Rect2(0, 17.8099, 49.8546, 13.2737)
 y_sort_enabled = true
 
 [node name="Level1" parent="Game Manager" instance=ExtResource("1_ecf8m")]
+y_sort_enabled = true
 
 [node name="Area2D" parent="Game Manager/Level1" instance=ExtResource("5_bqkcu")]
 position = Vector2(1489, 255)
 
 [node name="Player" parent="Game Manager" instance=ExtResource("2_urow0")]
+z_index = 1
 y_sort_enabled = true
 position = Vector2(45, 56)
 
@@ -178,3 +180,5 @@ SQ = true
 [node name="Slime4" parent="Game Manager" instance=ExtResource("8_fbnpi")]
 position = Vector2(1504, 4)
 SQ = true
+
+[connection signal="body_entered" from="Game Manager/Level1/Area2D" to="Game Manager/Level1/Area2D" method="_on_body_entered"]
