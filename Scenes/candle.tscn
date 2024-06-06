@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://datex8v0qtfgb"]
+
+[ext_resource type="SpriteFrames" path="res://Assets/dungeontiles-extended v1.1/candle.tres" id="1_tv27i"]
+
+[node name="Node2D" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_tv27i")
+animation = &"fire"
+frame_progress = 0.496714

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx7ko4mpsifxa"]
+
+[ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_4tbju"]
+[ext_resource type="SpriteFrames" path="res://Assets/KingAllAnimations/boss_frames.tres" id="2_68s1y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_to7ip"]
+radius = 3.0
+height = 16.0
+
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_4tbju")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7, 0)
+sprite_frames = ExtResource("2_68s1y")
+animation = &"Idle"
+frame_progress = 0.53483
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 4)
+build_mode = 1
+polygon = PackedVector2Array(-1, -15, 7, -15, 6, 10, -7, 10, -8, -14)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_to7ip")
