@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://brx1my3d7k5r"]
+[gd_scene load_steps=34 format=3 uid="uid://dv4fald4idl2r"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8rpn8"]
 [ext_resource type="Texture2D" uid="uid://dvf8yevpc62g2" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Soldier/Soldier with shadows/Soldier-Idle.png" id="2_1a7n6"]
