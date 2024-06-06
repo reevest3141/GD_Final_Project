@@ -1,17 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhhq4j7fovjpx"]
+[gd_scene load_steps=4 format=3 uid="uid://dhhq4j7fovjpx"]
 
-[ext_resource type="SpriteFrames" path="res://Assets/KingAllAnimations/projectile.tres" id="1_qsf65"]
+[ext_resource type="Script" path="res://Projectile.gd" id="1_e0f2x"]
+[ext_resource type="SpriteFrames" uid="uid://sw8p5jlhd2ye" path="res://Assets/KingAnimations/projectile.tres" id="2_wilkr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5waxd"]
 radius = 6.0
 
-[node name="Projectile" type="CharacterBody2D"]
+[node name="area" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_e0f2x")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("1_qsf65")
-animation = &"moving"
-frame_progress = 0.900969
+[node name="animations" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_wilkr")
+animation = &"Moving"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(5, 1)
 shape = SubResource("CircleShape2D_5waxd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

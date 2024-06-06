@@ -3,11 +3,17 @@ extends CharacterBody2D
 
 
 var player
-var min_distance = 200
-var max_distance = 300
-var speed = 100
+var min_distance = 100
+var max_distance = 125
+var speed = 50
 var rand = RandomNumberGenerator.new()
 @onready var boss : AnimatedSprite2D = $AnimatedSprite2D
+
+@export var projectile_scene : PackedScene
+
+var isAttacking = false
+
+var isHurt = false
 
 
 func _ready():
@@ -20,36 +26,50 @@ func _ready():
 	add_child(shoot_timer)
 
 func _physics_process(delta):
-	var direction = (player.global_position - global_position).normalized()
-	var distance = global_position.distance_to(player.global_position)
-	var move = 0
-	if(delta - int(delta) < 1.0 && delta - int(delta) < 0.0):
-		move = rand.randf_range(0.1, 1)
+	if(await update_velocity() > 10):
+		move_and_slide()
+	projectile_scene = preload("res://Scenes/Projectile.tscn")
+
+func update_velocity():
+	var target = player.get_global_position()
+	var direction = global_position.direction_to(target)
+	var distance = global_position.distance_to(target)
+	
 	if distance < min_distance:
-		velocity = -direction * speed * move
-		boss.play("Walk")
-	elif distance > max_distance:
-		velocity = direction * speed * move
-		boss.play("Walk")
-	if(velocity.length() == 0):
+		velocity = -direction * speed * distance/min_distance
+	elif distance > min_distance:
+		velocity = direction * speed * distance/min_distance
+	if(distance < 125 && distance > 100):
+		velocity = Vector2.ZERO
+	if(isAttacking):
+		boss.play("Attack_1")
+		await boss.animation_finished
+		isAttacking = false
+	elif(isHurt):
+		boss.play("Hit")
+	elif(velocity == Vector2.ZERO):
 		boss.play("Idle")
+	else:
+		boss.play("Walk")
 		
 	if(direction.x < 0):
 		boss.flip_h = true
 	if(direction.x > 0):
 		boss.flip_h = false
-		
-	move_and_slide()
-#var projectile_scene = preload("res://Scenes/Projectile.tscn")
-	
+	return global_position.distance_to(target)
 
 func _on_ShootTimer_timeout():
+	
 	var directions = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1),
 					  Vector2(1,1).normalized(), Vector2(-1,-1).normalized(), 
 					  Vector2(1,-1).normalized(), Vector2(-1,1).normalized()]
-
-	#for direction in directions:
-		#var projectile = projectile_scene.instance()
-		#projectile.position = global_position
-		#projectile.direction = direction
-		#get_parent().add_child(projectile)
+	
+	isAttacking = true
+	
+	for direction in directions:
+		var projectile = projectile_scene.instantiate()
+		projectile.global_position = global_position
+		projectile.direction = direction
+		projectile.z_index = 1
+		projectile.rotate(atan(direction.y/direction.x))
+		get_parent().add_child(projectile)
