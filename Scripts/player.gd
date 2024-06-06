@@ -12,6 +12,7 @@ var isHurt = false
 var isAttacking = false
 var hittables_right = []
 var hittables_left = []
+var slimes = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +25,9 @@ func _on_dialogic_signal(argument: String):
 	if argument == "Pay for inn":
 		update_gold(-5)
 		heal(total_hp)
+	
+	if argument == "SQ_Complete":
+		update_gold(15)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -98,6 +102,11 @@ func heal(amt):
 	if current_hp >= total_hp:
 		current_hp = total_hp
 	HP_ui.play(str(current_hp))
+	
+func SQ():
+	slimes -= 1
+	if slimes == 0:
+		Dialogic.VAR.SQ_Complete = true
 #func _on_hurtbox_left_body_entered(body):
 	#if body is Area2D:
 		#hittables_left.append(body)

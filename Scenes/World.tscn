@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=17 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_0s4nn"]
 [ext_resource type="PackedScene" uid="uid://blgmdm0162wd5" path="res://new_level.tscn" id="5_bqkcu"]
 [ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
+[ext_resource type="PackedScene" uid="uid://ubjw4it14c6h" path="res://Scenes/npc_2.tscn" id="7_wak06"]
+[ext_resource type="PackedScene" uid="uid://dy8vrsjv1038i" path="res://Scenes/Slime.tscn" id="8_fbnpi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4xw6"]
 atlas = ExtResource("1_3t3x5")
@@ -157,3 +159,22 @@ script = ExtResource("3_0s4nn")
 
 [node name="NPC_1" parent="Game Manager" instance=ExtResource("5_obl60")]
 position = Vector2(129, 64)
+
+[node name="NPC_2" parent="Game Manager" instance=ExtResource("7_wak06")]
+position = Vector2(1369, 226)
+
+[node name="Slime" parent="Game Manager" instance=ExtResource("8_fbnpi")]
+position = Vector2(1322, 28)
+SQ = true
+
+[node name="Slime2" parent="Game Manager" instance=ExtResource("8_fbnpi")]
+position = Vector2(1428, 85)
+SQ = true
+
+[node name="Slime3" parent="Game Manager" instance=ExtResource("8_fbnpi")]
+position = Vector2(1333, 108)
+SQ = true
+
+[node name="Slime4" parent="Game Manager" instance=ExtResource("8_fbnpi")]
+position = Vector2(1504, 4)
+SQ = true
