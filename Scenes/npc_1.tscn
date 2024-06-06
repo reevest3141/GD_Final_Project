@@ -12,9 +12,9 @@ script = ExtResource("1_ttvn2")
 
 [node name="knight" parent="." instance=ExtResource("2_hb603")]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Interaction_area" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction_area"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_bchr1")
 
@@ -23,5 +23,5 @@ position = Vector2(6, -10)
 scale = Vector2(0.461538, 0.461538)
 texture = ExtResource("3_6clvj")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Interaction_area" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Interaction_area" to="." method="_on_area_2d_body_exited"]

@@ -6,6 +6,7 @@ class_name Enemy
 @export var total_hp = 4
 @onready var current_hp = total_hp
 @onready var animations = $Graphics
+@export var SQ = false
 var gold = randi() % 5 + 1
 var target
 var isHurt = false
@@ -39,6 +40,8 @@ func take_damage(dmg):
 	isHurt = false
 	if current_hp <= 0:
 		player_character.update_gold(gold)
+		if SQ:
+			player_character.SQ()
 		queue_free()
 
 
