@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=6 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
 [ext_resource type="PackedScene" uid="uid://brx1my3d7k5r" path="res://Scenes/soldier.tscn" id="2_urow0"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_0s4nn"]
+[ext_resource type="PackedScene" uid="uid://blgmdm0162wd5" path="res://new_level.tscn" id="5_bqkcu"]
 [ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4xw6"]
@@ -133,15 +134,26 @@ region_enabled = true
 region_rect = Rect2(0, 17.8099, 49.8546, 13.2737)
 
 [node name="Game Manager" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Level1" parent="Game Manager" instance=ExtResource("1_ecf8m")]
 
+[node name="Area2D" parent="Game Manager/Level1" instance=ExtResource("5_bqkcu")]
+position = Vector2(1489, 255)
+
 [node name="Player" parent="Game Manager" instance=ExtResource("2_urow0")]
 z_index = 5
+y_sort_enabled = true
 position = Vector2(45, 56)
 
 [node name="Camera2D" type="Camera2D" parent="Game Manager/Player"]
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
+limit_left = -95
+limit_top = -130
+limit_right = 1650
+limit_bottom = 640
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 script = ExtResource("3_0s4nn")
 
 [node name="NPC_1" parent="Game Manager" instance=ExtResource("5_obl60")]
