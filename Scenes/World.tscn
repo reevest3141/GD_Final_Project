@@ -161,7 +161,7 @@ script = ExtResource("3_0s4nn")
 position = Vector2(129, 64)
 
 [node name="NPC_2" parent="Game Manager" instance=ExtResource("7_wak06")]
-position = Vector2(1369, 226)
+position = Vector2(1244, 117)
 
 [node name="Slime" parent="Game Manager" instance=ExtResource("8_fbnpi")]
 position = Vector2(1322, 28)
