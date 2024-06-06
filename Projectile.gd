@@ -1,13 +1,11 @@
 extends CharacterBody2D
 
 # Export variables to configure from the editor
-@export var speed: float = 200.0
+var speed: float = 200.0
 var direction: Vector2
 
 # Reference to the AnimatedSprite node
 @onready var animated_sprite: AnimatedSprite2D = $animations
-
-var hit = false
 var til = 0
 
 func _ready():
@@ -16,12 +14,10 @@ func _ready():
 
 func _physics_process(delta):
 	# Move the projectile in the given direction
-	if not hit:
-		var velocity = direction.normalized() * speed
-		
-		animated_sprite.play("Moving")
-	else:
-		animated_sprite.play("hit")
+	
+	velocity = direction.normalized() * speed
+	animated_sprite.play("Moving")
+	
 	move_and_slide()
 
 	til += delta

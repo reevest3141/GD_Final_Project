@@ -17,8 +17,7 @@ script = ExtResource("1_4tbju")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 1)
 sprite_frames = ExtResource("2_jk07v")
-animation = &"Idle"
-frame_progress = 0.83848
+animation = &"Die"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
@@ -47,3 +46,7 @@ visible = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_puric")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
