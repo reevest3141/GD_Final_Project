@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ubjw4it14c6h"]
+[gd_scene load_steps=5 format=3 uid="uid://ubjw4it14c6h"]
 
 [ext_resource type="PackedScene" uid="uid://8ru875w6mmil" path="res://Scenes/priest.tscn" id="1_mtumg"]
 [ext_resource type="Script" path="res://Scripts/npc_2.gd" id="1_tvynm"]
 [ext_resource type="Texture2D" uid="uid://b2r8gfib3qsfm" path="res://Assets/Lucid V1.2/PNG/Shadow/32/Message-Three-Dots.png" id="3_crc7e"]
-[ext_resource type="Texture2D" uid="uid://bk16l3y4i8nid" path="res://Assets/Lucid V1.2/PNG/Shadow/32/Exclamation-Mark.png" id="4_h1th5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ke0un"]
 radius = 25.0799
 
-[node name="npc_2" type="Node2D"]
+[node name="NPC_2" type="Node2D"]
 script = ExtResource("1_tvynm")
 
 [node name="Priest" parent="." instance=ExtResource("1_mtumg")]
@@ -22,11 +21,6 @@ shape = SubResource("CircleShape2D_ke0un")
 position = Vector2(7, -18)
 scale = Vector2(0.461538, 0.461538)
 texture = ExtResource("3_crc7e")
-
-[node name="Exclamation" type="Sprite2D" parent="."]
-position = Vector2(1, -26)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("4_h1th5")
 
 [connection signal="body_entered" from="Interaction_Area" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="Interaction_Area" to="." method="_on_interaction_area_body_exited"]

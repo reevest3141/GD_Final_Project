@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://brx1my3d7k5r"]
+[gd_scene load_steps=34 format=3 uid="uid://dv4fald4idl2r"]
 
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_8rpn8"]
 [ext_resource type="Texture2D" uid="uid://dvf8yevpc62g2" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Soldier/Soldier with shadows/Soldier-Idle.png" id="2_1a7n6"]
 [ext_resource type="Texture2D" uid="uid://dl13eusdgq6bx" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Soldier/Soldier with shadows/Soldier-Attack01.png" id="2_hbupt"]
 [ext_resource type="Texture2D" uid="uid://dh7leyqc1eboc" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Soldier/Soldier with shadows/Soldier-Hurt.png" id="3_tyqm1"]
@@ -123,7 +124,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_f6l1s")
 }],
 "loop": false,
-"name": &"Attack_1",
+"name": &"Attack_01",
 "speed": 10.0
 }, {
 "frames": [{
@@ -199,8 +200,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfmsg"]
 size = Vector2(22, 27)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuj8c"]
-size = Vector2(12, 19)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2foh"]
+radius = 5.0
+height = 18.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jst7w"]
 radius = 2.0
@@ -209,11 +211,13 @@ height = 10.0
 [node name="soldier" type="CharacterBody2D"]
 position = Vector2(0, 15)
 motion_mode = 1
+script = ExtResource("1_8rpn8")
+speed = 100
 
 [node name="Graphics" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -7)
 sprite_frames = SubResource("SpriteFrames_h4dyv")
-animation = &"Attack_1"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Hurtbox_left" type="Area2D" parent="."]
@@ -225,8 +229,8 @@ shape = SubResource("RectangleShape2D_bfmsg")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-1, -8.5)
-shape = SubResource("RectangleShape2D_wuj8c")
+position = Vector2(-1, -9)
+shape = SubResource("CapsuleShape2D_s2foh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

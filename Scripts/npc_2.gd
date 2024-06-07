@@ -10,10 +10,8 @@ func _ready():
 func _process(delta):
 	if Dialogic.current_timeline != null:
 		$TextBox.visible = false
-		$Exclamation.visible = false
 	else:
 		$TextBox.visible = active
-		$Exclamation.visible = (!active && !Dialogic.VAR.Slime_Quest)
 
 
 
