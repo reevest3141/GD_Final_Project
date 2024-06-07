@@ -47,8 +47,6 @@ func take_damage(dmg):
 		queue_free()
 
 
-
-
 func _on_hitbox_body_entered(body):
 	if body is Player && !isHurt:
 		animations.play("Attack")

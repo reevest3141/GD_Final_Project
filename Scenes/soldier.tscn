@@ -1,6 +1,5 @@
-[gd_scene load_steps=34 format=3 uid="uid://brx1my3d7k5r"]
+[gd_scene load_steps=33 format=3 uid="uid://brx1my3d7k5r"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_8rpn8"]
 [ext_resource type="Texture2D" uid="uid://dvf8yevpc62g2" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Soldier/Soldier with shadows/Soldier-Idle.png" id="2_1a7n6"]
 [ext_resource type="Texture2D" uid="uid://dl13eusdgq6bx" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Soldier/Soldier with shadows/Soldier-Attack01.png" id="2_hbupt"]
 [ext_resource type="Texture2D" uid="uid://dh7leyqc1eboc" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Soldier/Soldier with shadows/Soldier-Hurt.png" id="3_tyqm1"]
@@ -124,7 +123,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_f6l1s")
 }],
 "loop": false,
-"name": &"Attack_01",
+"name": &"Attack_1",
 "speed": 10.0
 }, {
 "frames": [{
@@ -210,13 +209,11 @@ height = 10.0
 [node name="soldier" type="CharacterBody2D"]
 position = Vector2(0, 15)
 motion_mode = 1
-script = ExtResource("1_8rpn8")
-speed = 100
 
 [node name="Graphics" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -7)
 sprite_frames = SubResource("SpriteFrames_h4dyv")
-animation = &"Idle"
+animation = &"Attack_1"
 autoplay = "Idle"
 
 [node name="Hurtbox_left" type="Area2D" parent="."]

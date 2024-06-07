@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcjn7xvx7vpr1"]
+[gd_scene load_steps=5 format=3 uid="uid://c2ttpmd0w0c7h"]
 
-[ext_resource type="SpriteFrames" uid="uid://baxgailcqu1j3" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Elite Orc/elite_orc.tres" id="1_xd124"]
+[ext_resource type="SpriteFrames" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Elite Orc/elite_orc.tres" id="1_xd124"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_foyg8"]
 radius = 6.0
@@ -17,8 +17,9 @@ size = Vector2(24, 30)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_xd124")
-animation = &"Attack_1"
-frame_progress = 0.377777
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.711156
 
 [node name="Hitbox" type="Area2D" parent="."]
 visible = false
