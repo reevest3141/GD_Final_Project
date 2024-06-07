@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
-[ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
-[ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/Player.tscn" id="4_8fu4c"]
+[ext_resource type="PackedScene" path="./level_1.tscn" id="1_ecf8m"]
+[ext_resource type="PackedScene" path="./Player.tscn" id="4_8fu4c"]
 [ext_resource type="PackedScene" uid="uid://blgmdm0162wd5" path="res://new_level.tscn" id="5_bqkcu"]
 [ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
 [ext_resource type="PackedScene" path="res://Scenes/npc_2.tscn" id="7_wak06"]
