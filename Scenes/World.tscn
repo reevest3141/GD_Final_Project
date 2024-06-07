@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=16 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
-[ext_resource type="PackedScene" uid="uid://dv4fald4idl2r" path="res://Scenes/soldier.tscn" id="2_urow0"]
-[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_0s4nn"]
-[ext_resource type="PackedScene" uid="uid://dj5kpoew8uot0" path="res://Scenes/new_level.tscn" id="5_bqkcu"]
+[ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/Player.tscn" id="4_8fu4c"]
+[ext_resource type="PackedScene" uid="uid://blgmdm0162wd5" path="res://new_level.tscn" id="5_bqkcu"]
 [ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
 [ext_resource type="PackedScene" path="res://Scenes/npc_2.tscn" id="7_wak06"]
 [ext_resource type="PackedScene" uid="uid://dy8vrsjv1038i" path="res://Scenes/Slime.tscn" id="8_fbnpi"]
@@ -144,7 +143,7 @@ y_sort_enabled = true
 [node name="Area2D" parent="Game Manager/Level1" instance=ExtResource("5_bqkcu")]
 position = Vector2(1489, 255)
 
-[node name="Player" parent="Game Manager" instance=ExtResource("2_urow0")]
+[node name="Player" parent="Game Manager" instance=ExtResource("4_8fu4c")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(45, 56)
@@ -163,7 +162,7 @@ script = ExtResource("3_0s4nn")
 position = Vector2(129, 64)
 
 [node name="NPC_2" parent="Game Manager" instance=ExtResource("7_wak06")]
-position = Vector2(1369, 226)
+position = Vector2(1244, 117)
 
 [node name="Slime" parent="Game Manager" instance=ExtResource("8_fbnpi")]
 position = Vector2(1322, 28)

@@ -22,7 +22,7 @@ func _process(delta):
 	pass
 	
 func _physics_process(delta):
-	if (update_velocity() > 20):
+	if (update_velocity() > 20 && update_velocity() < 50):
 		move_and_slide()
 	animate_enemy()
 
@@ -33,6 +33,8 @@ func update_velocity():
 
 
 func take_damage(dmg):
+	if isHurt:
+		return
 	current_hp -= dmg
 	animations.play("Hurt")
 	isHurt = true
@@ -43,8 +45,6 @@ func take_damage(dmg):
 		if SQ:
 			player_character.SQ()
 		queue_free()
-
-
 
 
 func _on_hitbox_body_entered(body):
