@@ -8,7 +8,7 @@ var max_distance = 125
 var speed = 50
 var rand = RandomNumberGenerator.new()
 @onready var boss: AnimatedSprite2D = $AnimatedSprite2D
-@onready var camera : Camera2D = $Camera2D
+@onready var camera = get_node("/root/Boss Scene/Player/Camera2D")
 @onready var health_bar: AnimatedSprite2D = $HealthBar
 
 @export var projectile_scene: PackedScene
@@ -38,7 +38,7 @@ func _ready():
 	add_child(shoot_timer)
 	health_bar.play("Damage_0")
 	boss_phase = Phases.PHASETWO
-	boss.connect("animation_finished", _on_animation_finished)
+	#boss.connect("animation_finished", _on_animation_finished)
 
 func _physics_process(delta):
 	if update_velocity() > 10:

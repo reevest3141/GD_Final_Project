@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cx7ko4mpsifxa" path="res://Scenes/boss.tscn" id="2_3qapk"]
 [ext_resource type="PackedScene" uid="uid://3m1a0x2gq413" path="res://Scenes/torch.tscn" id="3_qm2sh"]
 [ext_resource type="PackedScene" uid="uid://datex8v0qtfgb" path="res://Scenes/candle.tscn" id="4_rmg17"]
-[ext_resource type="PackedScene" uid="uid://6c114chre0uq" path="res://Scenes/player.tscn" id="5_sxa4m"]
+[ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/player.tscn" id="5_sxa4m"]
 [ext_resource type="Script" path="res://Scripts/Boss_camera.gd" id="6_lwna3"]
 
 [node name="Boss Scene" type="Node2D"]
