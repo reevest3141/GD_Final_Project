@@ -55,6 +55,7 @@ frame_progress = 0.0
 [node name="Boss" parent="." instance=ExtResource("2_3qapk")]
 z_index = 2
 position = Vector2(-30, -200)
+total_hp = 8
 curr_hp = 8
 
 [node name="Player" parent="." instance=ExtResource("5_sxa4m")]
