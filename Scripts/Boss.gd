@@ -151,15 +151,15 @@ func attack():
 	boss.play("Attack_1")
 	await boss.animation_finished
 	_on_animation_finished("Attack_1")
-	if(boss_phase == Phases.PHASETWO):
-		if(boss.flip_h):
-			boss.connect("body_entered", _on_Left_body_entered)
-		else:
-			boss.connect("body_entered", _on_Right_body_entered)
-		if(boss.flip_h):
-			boss.disconnect("body_entered", _on_Left_body_entered)
-		else:
-			boss.disconnect("body_entered", _on_Right_body_entered)
+	#if(boss_phase == Phases.PHASETWO):
+		#if(boss.flip_h):
+			#boss.connect("body_entered", _on_Left_body_entered)
+		#else:
+			#boss.connect("body_entered", _on_Right_body_entered)
+		#if(boss.flip_h):
+			#boss.disconnect("body_entered", _on_Left_body_entered)
+		#else:
+			#boss.disconnect("body_entered", _on_Right_body_entered)
 		
 	
 func transition_to_Hurt():
@@ -213,6 +213,7 @@ func phase2Projectiles():
 		projectile.z_index = 1
 		projectile.rotation = atan2(direction.y, direction.x)
 		projectile.speed = 150
+		projectile.limit = 4
 		get_parent().add_child(projectile)
 	
 
