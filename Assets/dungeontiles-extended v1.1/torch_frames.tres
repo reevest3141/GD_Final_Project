@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://dncna4nc1eo0t"]
+
+[ext_resource type="Texture2D" uid="uid://34lgu4r78011" path="res://Assets/dungeontiles-extended v1.1/dungeontileset-extended.png" id="1_juudx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqfcj"]
+atlas = ExtResource("1_juudx")
+region = Rect2(128, 352, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bsx0"]
+atlas = ExtResource("1_juudx")
+region = Rect2(144, 352, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b6cq"]
+atlas = ExtResource("1_juudx")
+region = Rect2(160, 352, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2rrp"]
+atlas = ExtResource("1_juudx")
+region = Rect2(176, 352, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nojgk"]
+atlas = ExtResource("1_juudx")
+region = Rect2(192, 352, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7g8h"]
+atlas = ExtResource("1_juudx")
+region = Rect2(208, 352, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjjt3"]
+atlas = ExtResource("1_juudx")
+region = Rect2(224, 352, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri2uy"]
+atlas = ExtResource("1_juudx")
+region = Rect2(240, 352, 16, 22)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqfcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bsx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b6cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2rrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nojgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7g8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjjt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri2uy")
+}],
+"loop": true,
+"name": &"flicker",
+"speed": 7.0
+}]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://datex8v0qtfgb"]
+
+[ext_resource type="SpriteFrames" uid="uid://cbnt0br86ead2" path="res://Assets/dungeontiles-extended v1.1/candle_frames.tres" id="1_e03br"]
+
+[node name="Node2D" type="AnimatedSprite2D"]
+z_index = 1
+sprite_frames = ExtResource("1_e03br")
+animation = &"flicker"
+frame_progress = 0.605595
