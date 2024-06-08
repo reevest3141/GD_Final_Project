@@ -1,20 +1,20 @@
 extends CharacterBody2D
+class_name Enemy
 
 var player
 var min_distance = 100
 var max_distance = 125
-@export var total_hp = 8
-@export var curr_hp = 4
+@export var total_hp = 16
+@export var current_hp = total_hp
 var speed = 50
 var rand = RandomNumberGenerator.new()
-@onready var boss: AnimatedSprite2D = $AnimatedSprite2D
-@onready var camera = get_node("/root/Boss Scene/Player/Camera2D")
+@onready var boss: AnimatedSprite2D = $Graphics
 @onready var health_bar: AnimatedSprite2D = $HealthBar
 
 @export var projectile_scene: PackedScene
 
-var isHurt = false
 var i = 1
+
 enum States {WALKING, IDLE, HURT, DEATH, ATTACKING, ATTACKING2}
 enum Phases {PHASEONE, PHASETWO}
 
@@ -26,24 +26,30 @@ var curr_state: States
 var last_state: States
 var phase2Timer = 0
 
+var camera
+
+var isHurt = false
+var dead = false
+
 var shoot_timer
 
 func _ready():
-	player = get_node("../Player")
-	
+	player = get_node("/root/World/Game Manager/Player").get_child(0)
+		
+	camera = player.get_node("Camera2D")
 	shoot_timer = Timer.new()
 	shoot_timer.wait_time = 2.0
 	shoot_timer.autostart = true
 	shoot_timer.connect("timeout", _on_ShootTimer_timeout)
 	add_child(shoot_timer)
 	health_bar.play("Damage_0")
-	boss_phase = Phases.PHASETWO
-	#boss.connect("animation_finished", _on_animation_finished)
+	boss_phase = Phases.PHASEONE
+	projectile_scene = preload("res://Scenes/Projectile.tscn")
+	boss.connect("animation_finished", _on_animation_finished)
 
 func _physics_process(delta):
-	if update_velocity() > 10:
+	if update_velocity() > 10 && !dead:
 		move_and_slide()
-	projectile_scene = preload("res://Scenes/Projectile.tscn")
 
 var justAttacked = false
 var projectileAttack2 = false
@@ -53,6 +59,20 @@ func update_velocity():
 	var direction = global_position.direction_to(target)
 	var distance = global_position.distance_to(target)
 	
+	if(dead):
+		curr_state = States.DEATH
+	match curr_state:
+		States.IDLE:
+			idle()
+		States.WALKING:
+			walk()
+		States.ATTACKING:
+			attack()
+		States.HURT:
+			take_damage()
+		States.DEATH:
+			death()
+			
 	match boss_phase:
 		Phases.PHASEONE:
 			if distance < min_distance:
@@ -85,48 +105,22 @@ func update_velocity():
 					phase2Projectiles()
 					justAttacked = false
 					inAttackRange = false
-			
-	
-	#if(curr_hp < 5 || phase2Timer > 5):
-		#if distance < min_distance:
-			#velocity = -direction * speed * distance / min_distance
-		#elif distance > min_distance:
-			#velocity = direction * speed * distance / min_distance
-		#if distance < 125 and distance > 100:
-			#velocity = Vector2.ZERO
-	#else:
-		#if( distance < 20):
-			#velocity = -direction * speed * distance / 20
-		#elif(distance > 20):
-			#velocity = direction * speed * distance/20
-		#if(distance < 30 and distance > 20):
-			#velocity = Vector2.ZERO
-			#inAttackRange = true
 	
 	if velocity == Vector2.ZERO and curr_state != States.ATTACKING:
 		transition_to_Idle()
 	elif curr_state != States.ATTACKING:
 		transition_to_Walking()
 		
-	match curr_state:
-		States.IDLE:
-			idle()
-		States.WALKING:
-			walk()
-		States.ATTACKING:
-			attack()
-		States.HURT:
-			hurt()
-		States.DEATH:
-			death()
-		
-	boss.flip_h = direction.x < 0
-	if(direction.x < 0):
-		health_bar.global_position.x = global_position.x + 15 
-	else:
-		health_bar.global_position.x = global_position.x
-	
+	if(!dead):
+		boss.flip_h = direction.x < 0
+		if(direction.x < 0):
+			health_bar.global_position.x = global_position.x + 15 
+		else:
+			health_bar.global_position.x = global_position.x
 
+	if(isHurt):
+		isHurt = false
+	
 	return global_position.distance_to(target)
 	
 func transition_to_Walking():
@@ -147,47 +141,49 @@ func transition_to_Attacking():
 	last_state = curr_state
 	curr_state = States.ATTACKING
 	
-func attack():
+func attack(dmg = 1):
 	boss.play("Attack_1")
 	await boss.animation_finished
 	_on_animation_finished("Attack_1")
-	#if(boss_phase == Phases.PHASETWO):
-		#if(boss.flip_h):
-			#boss.connect("body_entered", _on_Left_body_entered)
-		#else:
-			#boss.connect("body_entered", _on_Right_body_entered)
-		#if(boss.flip_h):
-			#boss.disconnect("body_entered", _on_Left_body_entered)
-		#else:
-			#boss.disconnect("body_entered", _on_Right_body_entered)
 		
 	
 func transition_to_Hurt():
 	last_state = curr_state
 	curr_state = States.HURT
 	
-func hurt():
-	print(curr_hp)
-	curr_hp -= 1
-	if curr_hp % 2 == 0:
-		health_bar.play("Damage_" + str(i))
+func take_damage(dmg = 1):
+	if(isHurt):
+		return
+	isHurt = true
+	current_hp -= dmg
+	if current_hp <= 0:
+		transition_to_Death()
+		return
 	boss.play("Hit")
 	await boss.animation_finished
 	_on_animation_finished("Hit")
-	i+=1
-	if(curr_hp < 5 && phase2flag):
+	if current_hp % 4 == 0:
+		health_bar.play("Damage_" + str(i))
+		i += 1
+	
+
+	
+	if current_hp <= 8 and phase2flag:
 		shake_camera()
 		boss_phase = Phases.PHASETWO
 		phase2flag = false
-	
+
 func transition_to_Death():
-	last_state = curr_state
+	last_state = States.DEATH
 	curr_state = States.DEATH
 
 func death():
+	health_bar.play("Damage_4")
+	
 	boss.play("Die")
 	await boss.animation_finished
-	# _on_animation_finished("Die")
+	dead = true
+	_on_animation_finished("Die")
 	
 func transition_to_LastState():
 	curr_state = last_state
@@ -219,7 +215,6 @@ func phase2Projectiles():
 
 func _on_ShootTimer_timeout():
 	transition_to_Attacking()
-	
 	var directions = [
 		Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1),
 		Vector2(1, 1).normalized(), Vector2(-1, -1).normalized(), 
@@ -233,28 +228,14 @@ func _on_ShootTimer_timeout():
 		projectile.z_index = 1
 		projectile.rotation = atan2(direction.y, direction.x)
 		get_parent().add_child(projectile)
-		
-		
 
 func _on_animation_finished(anim_name):
-	if anim_name == "Attack_1":
-		transition_to_LastState()
-	elif anim_name == "Hit":
+	if anim_name == "Attack_1" or anim_name == "Hit":
 		transition_to_LastState()
 	elif anim_name == "Die":
 		boss.stop()
-
-func _on_hitbox_body_entered(body):
-	if body is Player:
-		var player = body as Player
-		transition_to_Hurt()
-		if player.isAttacking:
-			transition_to_Hurt()
-			if curr_hp == 0:
-				transition_to_Death()
-				
+	
 func shake_camera():
-	var camera = player.get_node("Camera2D")
 	camera.start_shake(5, 1) 
 	
 
@@ -263,7 +244,6 @@ func _on_Right_body_entered(body):
 		if(curr_state == States.ATTACKING && !boss.flip_h):
 			var player = body as Player
 			player.take_damage(1)
-
 
 func _on_Left_body_entered(body):
 	if(body is Player):

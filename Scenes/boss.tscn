@@ -15,10 +15,12 @@ size = Vector2(23, 24.5)
 collision_layer = 2
 script = ExtResource("1_4tbju")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Graphics" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 1)
 sprite_frames = ExtResource("2_jk07v")
-animation = &"Attack_1"
+animation = &"Hit"
+frame = 10
+frame_progress = 0.802088
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -51,11 +53,11 @@ scale = Vector2(0.583333, 0.5625)
 sprite_frames = ExtResource("3_o7ndv")
 animation = &"Damage_4"
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Right_body_entered"]
+[connection signal="animation_finished" from="Graphics" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="Graphics" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Right_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Right_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Left_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
