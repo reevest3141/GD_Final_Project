@@ -13,6 +13,7 @@ script = ExtResource("1_e0f2x")
 [node name="animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_wilkr")
 animation = &"Moving"
+frame_progress = 0.270019
 
 [node name="Area2D" type="Area2D" parent="."]
 

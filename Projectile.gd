@@ -6,7 +6,8 @@ var direction: Vector2
 
 # Reference to the AnimatedSprite node
 @onready var animated_sprite: AnimatedSprite2D = $animations
-var til = 0
+var ttl = 0
+@export var limit = 2
 
 func _ready():
 	# Start the moving animation
@@ -20,8 +21,8 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-	til += delta
-	if til > 2:
+	ttl += delta
+	if ttl > limit:
 		queue_free()
 		
 

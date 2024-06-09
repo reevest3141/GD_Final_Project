@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=45 format=3 uid="uid://bkvf0hlf0cpfq"]
+[gd_resource type="SpriteFrames" load_steps=44 format=3 uid="uid://bkvf0hlf0cpfq"]
 
 [ext_resource type="Texture2D" uid="uid://2nuwvunajfyx" path="res://Assets/KingAnimations/KingAllAnimations.png" id="1_e2kc1"]
 
@@ -13,10 +13,6 @@ region = Rect2(78, 116, 78, 58)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r824p"]
 atlas = ExtResource("1_e2kc1")
 region = Rect2(156, 116, 78, 58)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lqgpr"]
-atlas = ExtResource("1_e2kc1")
-region = Rect2(0, 0, 78, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vqml5"]
 atlas = ExtResource("1_e2kc1")
@@ -191,9 +187,6 @@ animations = [{
 "speed": 6.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lqgpr")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vqml5")
 }, {
