@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv6d4nv16exg5"]
+[gd_scene load_steps=7 format=3 uid="uid://bv6d4nv16exg5"]
 
 [ext_resource type="Script" path="res://Scripts/boss_scene.gd" id="1_o6uj4"]
 [ext_resource type="TileSet" uid="uid://je7iyp6bu6rv" path="res://Assets/dungeontiles-extended v1.1/Boss_Scene.tres" id="1_qmkch"]
 [ext_resource type="PackedScene" uid="uid://cx7ko4mpsifxa" path="res://Scenes/boss.tscn" id="2_3qapk"]
 [ext_resource type="PackedScene" uid="uid://3m1a0x2gq413" path="res://Scenes/torch.tscn" id="3_qm2sh"]
 [ext_resource type="PackedScene" uid="uid://datex8v0qtfgb" path="res://Scenes/candle.tscn" id="4_rmg17"]
+[ext_resource type="AudioStream" uid="uid://bbqjny8k8bi07" path="res://Assets/halodrome-120606.mp3" id="6_r7c3r"]
 
 [node name="Boss Scene" type="Node2D"]
 position = Vector2(235, 234)
@@ -58,3 +59,8 @@ frame_progress = 0.0
 
 [node name="Boss" parent="." instance=ExtResource("2_3qapk")]
 position = Vector2(-30, -200)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_r7c3r")
+volume_db = -4.012
+autoplay = true

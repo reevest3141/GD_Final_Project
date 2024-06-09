@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhhq4j7fovjpx"]
+[gd_scene load_steps=5 format=3 uid="uid://dhhq4j7fovjpx"]
 
 [ext_resource type="Script" path="res://Projectile.gd" id="1_e0f2x"]
 [ext_resource type="SpriteFrames" uid="uid://sw8p5jlhd2ye" path="res://Assets/KingAnimations/projectile.tres" id="2_wilkr"]
+[ext_resource type="AudioStream" uid="uid://omfvt3xa4es1" path="res://Assets/retro-game-sfx-explosion-104422.mp3" id="3_rf73f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5waxd"]
 radius = 6.0
@@ -21,5 +22,8 @@ frame_progress = 0.270019
 visible = false
 position = Vector2(5, 1)
 shape = SubResource("CircleShape2D_5waxd")
+
+[node name="boom" type="AudioStreamPlayer2D" parent="Area2D"]
+stream = ExtResource("3_rf73f")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

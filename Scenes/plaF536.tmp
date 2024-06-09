@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmq3qiu5vlske"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_i2l7c"]
+[ext_resource type="Script" path="res://Scripts/player_controller.gd" id="1_lhpau"]
+[ext_resource type="PackedScene" uid="uid://brx1my3d7k5r" path="res://Scenes/soldier.tscn" id="2_mt4bn"]
+[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="4_og3xu"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_i2l7c")
+
+[node name="soldier" parent="." instance=ExtResource("2_mt4bn")]
+position = Vector2(0, 0)
+script = ExtResource("1_lhpau")
+
+[node name="Camera2D" type="Camera2D" parent="soldier"]
+zoom = Vector2(5, 5)
+script = ExtResource("4_og3xu")
