@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=17 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
-[ext_resource type="PackedScene" path="./level_1.tscn" id="1_ecf8m"]
-[ext_resource type="PackedScene" path="./Player.tscn" id="4_8fu4c"]
+[ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
+[ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/player.tscn" id="4_8fu4c"]
 [ext_resource type="PackedScene" uid="uid://blgmdm0162wd5" path="res://new_level.tscn" id="5_bqkcu"]
 [ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
 [ext_resource type="PackedScene" uid="uid://ubjw4it14c6h" path="res://Scenes/npc_2.tscn" id="7_wak06"]
+[ext_resource type="AudioStream" uid="uid://c1mh8fjbwbrdt" path="res://Assets/Sam Video game music.mp3" id="8_e40pm"]
 [ext_resource type="PackedScene" uid="uid://dy8vrsjv1038i" path="res://Scenes/Slime.tscn" id="8_fbnpi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4xw6"]
@@ -166,3 +167,7 @@ SQ = true
 [node name="Slime4" parent="Game Manager" instance=ExtResource("8_fbnpi")]
 position = Vector2(1504, 4)
 SQ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Game Manager"]
+stream = ExtResource("8_e40pm")
+autoplay = true
