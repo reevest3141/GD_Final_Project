@@ -8,6 +8,7 @@ var isAttacking = false
 var isHurt = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player.get_child(1).volume_db = -40.0
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	pass # Replace with function body.
 
@@ -28,14 +29,19 @@ func animate():
 			return
 	if velocity.length() == 0:
 		animations.play("Idle")
+		player.get_child(1).volume_db = -40.0
 	else:
 		animations.play("Walk")
-
+		player.get_child(1).volume_db = 10.0
+		if(!player.get_child(1).playing):
+			player.get_child(1).play()
+@onready var player = get_node("/root/World/Game Manager/Player")
 func move(direction : Vector2):
 	velocity = direction
 	move_and_slide()
 
 func attack(dmg):
+	player.get_child(2).play()
 	animations.play("Attack_1")
 	if animations.flip_h:
 		for area in $Hurtbox_left.get_overlapping_areas():
