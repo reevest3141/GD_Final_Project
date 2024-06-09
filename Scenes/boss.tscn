@@ -55,6 +55,7 @@ animation = &"Damage_4"
 
 [node name="Swing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_vm775")
+max_polyphony = 20
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_m2djf")
