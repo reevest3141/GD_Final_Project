@@ -39,11 +39,11 @@ func attack(dmg):
 	animations.play("Attack_1")
 	if animations.flip_h:
 		for area in $Hurtbox_left.get_overlapping_areas():
-			if area.get_parent() is Enemy:
+			if area.get_parent() is Enemy || area.get_parent() is Boss:
 				area.get_parent().take_damage(dmg)
 	else:
 		for area in $Hurtbox_right.get_overlapping_areas():
-			if area.get_parent() is Enemy:
+			if area.get_parent() is Enemy || area.get_parent() is Boss:
 				area.get_parent().take_damage(dmg)
 	isAttacking = true
 

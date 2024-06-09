@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Enemy
+class_name Boss
 
 var player
 var min_distance = 100
@@ -9,6 +9,8 @@ var max_distance = 125
 var speed = 50
 var rand = RandomNumberGenerator.new()
 @onready var boss: AnimatedSprite2D = $Graphics
+@onready var hurt_audio: AudioStreamPlayer2D = $Hurt
+@onready var swing_audio: AudioStreamPlayer2D = $Swing
 @onready var health_bar: AnimatedSprite2D = $HealthBar
 
 @export var projectile_scene: PackedScene
@@ -47,7 +49,7 @@ func _ready():
 	boss.connect("animation_finished", _on_animation_finished)
 
 func _physics_process(delta):
-	if not dead and update_velocity() > 10:
+	if not dead and not isHurt and update_velocity() > 10:
 		move_and_slide()
 
 var justAttacked = false
@@ -88,9 +90,9 @@ func update_velocity():
 			if shoot_timer.is_connected("timeout",  _on_ShootTimer_timeout):
 				shoot_timer.disconnect("timeout",  _on_ShootTimer_timeout)
 			if distance < 10:
-				velocity = -direction * speed * (distance + 25) / 100
+				velocity = -direction * speed * (distance + 25) / 50
 			elif distance > 10:
-				velocity = direction * speed * (distance + 25) / 100
+				velocity = direction * speed * (distance + 25) / 50
 			if distance < 20 and distance > 10:
 				velocity = Vector2.ZERO
 				inAttackRange = true
@@ -99,9 +101,9 @@ func update_velocity():
 				justAttacked = true
 			elif justAttacked:
 				if distance < 175:
-					velocity = -direction * speed * 75 / distance
+					velocity = -direction * speed * 90 / distance
 				elif distance > 175:
-					velocity = direction * speed * 75 / distance
+					velocity = direction * speed * 90 / distance
 				if distance < 200 and distance > 175:
 					velocity = Vector2.ZERO
 					transition_to_Attacking()
@@ -143,6 +145,7 @@ func idle():
 func transition_to_Attacking():
 	last_state = curr_state
 	curr_state = States.ATTACKING
+	swing_audio.play()
 	
 func attack(dmg = 1):
 	boss.play("Attack_1")
@@ -153,50 +156,55 @@ func attack(dmg = 1):
 func transition_to_Hurt():
 	last_state = curr_state
 	curr_state = States.HURT
-	print("Transition to HURT")
-	
+	hurt_audio.play()
+
 func take_damage(dmg = 1):
 	if isHurt or dead:
 		return
-	isHurt = true
+	hurt_audio.play()
 	current_hp -= dmg
 	if current_hp <= 0:
+		dead = true
+		boss.play("Hit")
+		await boss.animation_finished
+		_on_animation_finished("Hit")
 		transition_to_Death()
 		return
-
+	print(current_hp)
 	if current_hp % 4 == 0:
 		health_bar.play("Damage_" + str(i))
+		print(current_hp)
+		print(i)
 		i += 1
+		
+	isHurt = true
 	
 	# Transition to hurt state and wait for the animation to complete
-	transition_to_Hurt()
+	#transition_to_Hurt()
 	boss.play("Hit")
 	await boss.animation_finished
-	print(boss.get_animation())
-	
 	_on_animation_finished("Hit")
 	
 	if current_hp <= 8 and phase2flag:
 		shake_camera()
 		boss_phase = Phases.PHASETWO
 		phase2flag = false
+	isHurt = false
 
 func transition_to_Death():
 	curr_state = States.DEATH
 	dead = true
-	print("Transition to DEATH")
 	death()
 
 func death():
 	health_bar.play("Damage_4")
 	boss.play("Die")
 	await boss.animation_finished
-	print("Die animation finished")
 	_on_animation_finished("Die")
 	
 func transition_to_LastState():
 	curr_state = last_state
-	print("Transition to last state: ", last_state)
+
 
 @onready var collision_right = $Area2D/HurtBox
 @onready var collision_left = $Area2D2/HurtBox2
@@ -239,9 +247,16 @@ func _on_ShootTimer_timeout():
 		get_parent().add_child(projectile)
 
 func _on_animation_finished(anim_name):
-	if anim_name == "Attack_1" or anim_name == "Hit":
+	if anim_name == "Attack_1":
 		if dead:
 			death()
+		else:
+			transition_to_LastState()
+	elif anim_name =="Hit":
+		if(dead):
+			death()
+		elif last_state == States.ATTACKING:
+			transition_to_Idle()
 		else:
 			transition_to_LastState()
 	elif anim_name == "Die":

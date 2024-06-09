@@ -11,8 +11,6 @@ func _process(delta):
 	if shake_timer > 0:
 		shake_timer -= delta
 		global_position = get_parent().global_position + Vector2(randf_range(-shake_amount, shake_amount), randf_range(-shake_amount, shake_amount))
-	#else:
-		#global_position = player.global_position
 
 func start_shake(amount, duration):
 	shake_amount = amount
