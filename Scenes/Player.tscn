@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmq3qiu5vlske"]
+[gd_scene load_steps=7 format=3 uid="uid://cmq3qiu5vlske"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_i2l7c"]
 [ext_resource type="Script" path="res://Scripts/player_controller.gd" id="1_lhpau"]
 [ext_resource type="PackedScene" uid="uid://brx1my3d7k5r" path="res://Scenes/soldier.tscn" id="2_mt4bn"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="4_og3xu"]
+[ext_resource type="AudioStream" uid="uid://dklfvd2qqi40u" path="res://Assets/running-1-6846.mp3" id="5_cfatw"]
+[ext_resource type="AudioStream" uid="uid://bm0yero6eq3qa" path="res://Assets/mxl993_yarstick_swoosh_6-88322.mp3" id="6_mgk6k"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_i2l7c")
@@ -15,3 +17,14 @@ script = ExtResource("1_lhpau")
 [node name="Camera2D" type="Camera2D" parent="soldier"]
 zoom = Vector2(5, 5)
 script = ExtResource("4_og3xu")
+
+[node name="run" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_cfatw")
+volume_db = 10.184
+autoplay = true
+
+[node name="attack_audio" type="AudioStreamPlayer2D" parent="."]
+rotation = 2.59007
+stream = ExtResource("6_mgk6k")
+volume_db = 10.864
+max_polyphony = 100
