@@ -36,8 +36,8 @@ var dead = false
 var shoot_timer
 
 func _ready():
-	player = get_node("/root/World/Game Manager/Player").get_character()
-	camera = player.get_node("Camera2D")
+	player = get_node("/root/World/Game Manager/Player").character
+	camera = player.get_node("Camera")
 	shoot_timer = Timer.new()
 	shoot_timer.wait_time = 2.0
 	shoot_timer.autostart = true
