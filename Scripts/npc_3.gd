@@ -30,5 +30,5 @@ func _input(event):
 		return
 		
 	if event.is_action_pressed("Interact"):
-		var layout = Dialogic.start("npc_3_timeline_" + str(player.character.name))
+		var layout = Dialogic.start("NPC_3_timeline_" + str(player.character.name))
 		layout.register_character(load("res://Dialogic/npc_3.dch"), $orc)
