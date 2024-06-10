@@ -1,11 +1,23 @@
 extends Camera2D
-@onready var tilemap = $TileMap
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	pass
 
+func UpdateLimits(bounds: Array[Vector2]) -> void:
+	limit_left
+	pass  
 
+var shake_amount = 0
+var shake_timer = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if shake_timer > 0:
+		shake_timer -= delta
+		global_position = get_parent().global_position + Vector2(randf_range(-shake_amount, shake_amount), randf_range(-shake_amount, shake_amount))
+
+func start_shake(amount, duration):
+	shake_amount = amount
+	shake_timer = duration
+
+func randf_range(min, max):
+	return randf() * (max - min) + min
