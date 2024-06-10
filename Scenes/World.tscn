@@ -154,5 +154,5 @@ y_sort_enabled = true
 script = ExtResource("6_r7dw7")
 
 [node name="new_level" parent="Game Manager" instance=ExtResource("5_bqkcu")]
-position = Vector2(1106, 172)
+position = Vector2(1067, 183)
 script = null
