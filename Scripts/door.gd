@@ -17,6 +17,6 @@ func _process(delta):
 func _on_body_entered(body):
 	if(body is Player and opened):
 		var player = body as Player
-		player.respawn()
-		get_tree().call_deferred("change_scene_to_packed", target_scene)
+		player.get_parent().respawn()
+		get_tree().reload_current_scene()
 		

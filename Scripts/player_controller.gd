@@ -7,6 +7,9 @@ class_name Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	attack_dmg = 4-(2 * get_parent().current_char)
+	if(attack_dmg <= 0):
+		attack_dmg = 1
 	dead.connect(die)
 	HP_ui.play(str(current_hp))
 #hi
@@ -28,7 +31,9 @@ func _physics_process(delta):
 		attack(attack_dmg)
 
 func die():
-	get_parent().respawn()
+	Dialogic.VAR.Slime_Quest = false
+	Dialogic.VAR.SQ_Complete = false
+	get_parent().slimes = 4
 	get_tree().reload_current_scene()
 
 func heal(amt):

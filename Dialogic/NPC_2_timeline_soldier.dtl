@@ -7,7 +7,7 @@ if {Slime_Quest} == true:
 		npc_2: Please kill all the slimes, even one left can split into more!
 elif {Slime_Quest} == false:
 	if {SQ_Complete} == false:
-		npc_2: Adventurer! Help! My fields have been overrun with slimes, will you help clear them? I'm happy to pay you for your troubles.
+		npc_2: Adventurer! Help! The ruins have been overrun with slimes, will you help clear them? I'm happy to pay you for your troubles.
 		- Yes [if true]
 			set {Slime_Quest} = true
 		- No [if true]

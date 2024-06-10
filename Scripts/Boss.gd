@@ -36,8 +36,8 @@ var dead = false
 var shoot_timer
 
 func _ready():
-	player = get_node("/root/World/Game Manager/Player").get_character()
-	camera = player.get_node("Camera2D")
+	player = get_node("/root/World/Game Manager/Player").character
+	camera = player.get_node("Camera")
 	shoot_timer = Timer.new()
 	shoot_timer.wait_time = 2.0
 	shoot_timer.autostart = true
@@ -158,7 +158,7 @@ func transition_to_Hurt():
 	curr_state = States.HURT
 	hurt_audio.play()
 
-func take_damage(dmg = 1, orgin = self):
+func take_damage(dmg, orgin = self):
 	if isHurt or dead:
 		return
 	hurt_audio.play()
@@ -237,7 +237,7 @@ func _on_ShootTimer_timeout():
 	
 	for direction in directions:
 		var projectile = projectile_scene.instantiate()
-		projectile.global_position = global_position
+		projectile.global_position = position
 		projectile.direction = direction
 		projectile.z_index = 1
 		projectile.limit = 3

@@ -1,0 +1,18 @@
+if {Slime_Quest} == true:
+	if {SQ_Complete} == true:
+		npc_2: About time.
+		set {Slime_Quest} = false
+		[signal arg="SQ_Complete"]
+	else:
+		npc_2: Get back up there and finish your job, ribs.
+elif {Slime_Quest} == false:
+	if {SQ_Complete} == false:
+		npc_2: Hey bone boy - what are you doing wandering by yourself 'round here? Put yourself to use and go clear those slimes up north for me.
+		- Okay [if true]
+			set {Slime_Quest} = true
+			npc_2: Be quick about it, I don't have all day.
+		- No [if true]
+			set {Slime_Quest} = false
+			npc_2: Did you just talk back to me, you little punk? I'll show you!
+	else:
+		npc_2: You'd better get back to your wizard before someone thinks you're a free summon.

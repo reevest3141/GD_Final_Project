@@ -16,6 +16,7 @@ script = ExtResource("3_a73nb")
 scene = ExtResource("4_5uehy")
 overrides = {
 "choices_text_size": "35.0",
+"text_max_width": "500.0",
 "text_size": "35.0"
 }
 
