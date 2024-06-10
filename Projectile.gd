@@ -17,6 +17,8 @@ func _ready():
 func _physics_process(delta):
 
 	velocity = direction.normalized() * speed
+	
+	move_and_slide()
 
 	ttl += delta
 	if ttl > limit:
@@ -29,7 +31,7 @@ func _on_area_2d_body_entered(body):
 		animated_sprite.play("hit")
 		player.take_damage(1, self)
 		queue_free()
-	else:
+	elif body != Boss:
 		if body is TileMap:
 			direction = -direction
 			speed *=0.6

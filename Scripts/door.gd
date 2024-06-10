@@ -12,8 +12,11 @@ func _ready():
 func _process(delta):
 	pass
 	
+@export var target_scene : PackedScene = preload("res://Scenes/forest.tscn")
 
 func _on_body_entered(body):
 	if(body is Player and opened):
-		print("new scene!")
+		var player = body as Player
+		player.respawn()
+		get_tree().call_deferred("change_scene_to_packed", target_scene)
 		
