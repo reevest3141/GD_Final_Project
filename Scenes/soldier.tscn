@@ -215,6 +215,8 @@ position = Vector2(-1, -7)
 sprite_frames = SubResource("SpriteFrames_h4dyv")
 animation = &"Attack_1"
 autoplay = "Idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="Hurtbox_left" type="Area2D" parent="."]
 

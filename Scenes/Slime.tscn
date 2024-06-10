@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=3 uid="uid://dy8vrsjv1038i"]
 
 [ext_resource type="Texture2D" uid="uid://6wxr11i30x1m" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Slime/Slime with shadows/Slime-Attack.png" id="1_7xaim"]
-[ext_resource type="Script" path="res://Scripts/Slime.gd" id="1_qxyyx"]
+[ext_resource type="Script" path="res://Scripts/npc_controller.gd" id="1_nkq5f"]
 [ext_resource type="Texture2D" uid="uid://wg1heut7j6rq" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Slime/Slime with shadows/Slime-Idle.png" id="2_ofj37"]
 [ext_resource type="Texture2D" uid="uid://y5fbt0mwdc44" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Slime/Slime with shadows/Slime-Walk.png" id="3_05xmc"]
 [ext_resource type="Texture2D" uid="uid://bme4n2pi7nouj" path="res://Assets/Tiny RPG Character Asset Pack v1.02 -Full 15 Characters/Slime/Slime with shadows/Slime-Hurt.png" id="3_41m8r"]
@@ -116,7 +116,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xm60a")
 }],
 "loop": false,
-"name": &"Attack",
+"name": &"Attack_1",
 "speed": 10.0
 }, {
 "frames": [{
@@ -184,33 +184,38 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mq8v"]
-radius = 5.5
+radius = 7.0
 height = 22.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4816"]
-radius = 9.5
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj3y8"]
+size = Vector2(11, 26.5)
 
 [node name="Slime" type="CharacterBody2D"]
-script = ExtResource("1_qxyyx")
+script = ExtResource("1_nkq5f")
 speed = 30
+total_hp = 4
 
 [node name="Graphics" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pcpfm")
-animation = &"Hurt"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
+frame_progress = 0.729087
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(3.55271e-15, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0mq8v")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox_right" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_right"]
+position = Vector2(18, 1)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_d4816")
+shape = SubResource("RectangleShape2D_lj3y8")
 
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_hitbox_body_entered"]
+[node name="Hurtbox_left" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left"]
+position = Vector2(-18, 1)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_lj3y8")
