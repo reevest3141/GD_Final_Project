@@ -10,9 +10,6 @@ func _enter_tree():
 	character = char_list[current_char].instantiate()
 	character.set_script(load("res://Scripts/player_controller.gd"))
 	add_child(character)
-	var new_cam = Camera2D.new()
-	new_cam.set_script(load("res://Scripts/Camera2D.gd"))
-	character.add_child(new_cam)
 
 func _ready():
 	gold_ui.set_text("Gold: " + str(gold))

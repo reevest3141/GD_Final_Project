@@ -1,15 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=16 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
-[ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
-[ext_resource type="PackedScene" uid="uid://ciys5say2bvy5" path="res://Scenes/npc_3.tscn" id="2_36ttx"]
+[ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="2_lbwt5"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_0s4nn"]
 [ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/Player.tscn" id="4_8fu4c"]
 [ext_resource type="PackedScene" uid="uid://dj5kpoew8uot0" path="res://Scenes/new_level.tscn" id="5_bqkcu"]
-[ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
-[ext_resource type="PackedScene" uid="uid://ubjw4it14c6h" path="res://Scenes/npc_2.tscn" id="7_wak06"]
+[ext_resource type="PackedScene" uid="uid://r6clrp4mphuq" path="res://Scenes/forest.tscn" id="6_h3qyo"]
 [ext_resource type="AudioStream" uid="uid://c1mh8fjbwbrdt" path="res://Assets/Sam Video game music.mp3" id="8_e40pm"]
-[ext_resource type="PackedScene" uid="uid://dy8vrsjv1038i" path="res://Scenes/Slime.tscn" id="8_fbnpi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4xw6"]
 atlas = ExtResource("1_3t3x5")
@@ -139,20 +136,12 @@ region_rect = Rect2(0, 17.8099, 49.8546, 13.2737)
 
 [node name="Game Manager" type="Node2D" parent="."]
 y_sort_enabled = true
-
-[node name="npc_3" parent="Game Manager" instance=ExtResource("2_36ttx")]
-position = Vector2(194, 109)
-
-[node name="Level1" parent="Game Manager" instance=ExtResource("1_ecf8m")]
-y_sort_enabled = true
-
-[node name="Area2D" parent="Game Manager/Level1" instance=ExtResource("5_bqkcu")]
-position = Vector2(1489, 255)
+script = ExtResource("2_lbwt5")
 
 [node name="Player" parent="Game Manager" instance=ExtResource("4_8fu4c")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(45, 56)
+position = Vector2(138, 84)
 
 [node name="Camera2D" type="Camera2D" parent="Game Manager/Player"]
 zoom = Vector2(5, 5)
@@ -164,30 +153,13 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 script = ExtResource("3_0s4nn")
 
-[node name="NPC_1" parent="Game Manager" instance=ExtResource("5_obl60")]
-position = Vector2(129, 64)
-
-[node name="NPC_2" parent="Game Manager" instance=ExtResource("7_wak06")]
-position = Vector2(1244, 117)
-
-[node name="Slime" parent="Game Manager" instance=ExtResource("8_fbnpi")]
-position = Vector2(1322, 28)
-SQ = true
-
-[node name="Slime2" parent="Game Manager" instance=ExtResource("8_fbnpi")]
-position = Vector2(1428, 85)
-SQ = true
-
-[node name="Slime3" parent="Game Manager" instance=ExtResource("8_fbnpi")]
-position = Vector2(1333, 108)
-SQ = true
-
-[node name="Slime4" parent="Game Manager" instance=ExtResource("8_fbnpi")]
-position = Vector2(1504, 4)
-SQ = true
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Game Manager"]
 stream = ExtResource("8_e40pm")
 autoplay = true
 
-[connection signal="body_entered" from="Game Manager/Level1/Area2D" to="Game Manager/Level1/Area2D" method="_on_body_entered"]
+[node name="Forest" parent="Game Manager" instance=ExtResource("6_h3qyo")]
+
+[node name="Area2D" parent="Game Manager/Forest" instance=ExtResource("5_bqkcu")]
+position = Vector2(1068, 131)
+
+[connection signal="body_entered" from="Game Manager/Forest/Area2D" to="Game Manager/Forest/Area2D" method="_on_body_entered"]
