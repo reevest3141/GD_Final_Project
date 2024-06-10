@@ -1,14 +1,19 @@
 extends Camera2D
-@onready var tilemap = get_node("/root/World/Game Manager/Level").get_child(0).get_child(0)
+
 func _ready():
 	pass
-	#tilemap.TileMapBounds.connect(UpdateLimits)
-#
-#func UpdateLimits(bounds: Array[Vector2]) -> void:
-	#if bounds == []:
-		#return
-	#limit_left = int(bounds[0].x)
-	#limit_right = int(bounds[1].x)
-	#limit_bottom = int(bounds[1].y)
-	#limit_top = int(bounds[0].y)
-	#pass  
+
+var shake_amount = 0
+var shake_timer = 0
+
+func _process(delta):
+	if shake_timer > 0:
+		shake_timer -= delta
+		global_position = get_parent().global_position + Vector2(randf_range(-shake_amount, shake_amount), randf_range(-shake_amount, shake_amount))
+
+func start_shake(amount, duration):
+	shake_amount = amount
+	shake_timer = duration
+
+func randf_range(min, max):
+	return randf() * (max - min) + min
