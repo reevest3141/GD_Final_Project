@@ -36,7 +36,7 @@ var dead = false
 var shoot_timer
 
 func _ready():
-	player = get_node("/root/World/Game Manager/Player").get_child(0)
+	player = get_node("/root/World/Game Manager/Player").get_character()
 	camera = player.get_node("Camera2D")
 	shoot_timer = Timer.new()
 	shoot_timer.wait_time = 2.0
@@ -71,7 +71,7 @@ func update_velocity():
 		States.ATTACKING:
 			attack()
 		States.HURT:
-			take_damage()
+			take_damage(1, self)
 		States.DEATH:
 			death()
 	
@@ -158,7 +158,7 @@ func transition_to_Hurt():
 	curr_state = States.HURT
 	hurt_audio.play()
 
-func take_damage(dmg = 1):
+func take_damage(dmg = 1, orgin = self):
 	if isHurt or dead:
 		return
 	hurt_audio.play()
@@ -223,7 +223,7 @@ func phase2Projectiles():
 		projectile.z_index = 1
 		projectile.rotation = atan2(direction.y, direction.x)
 		projectile.speed = 150
-		projectile.limit = 4
+		projectile.limit = 6
 		get_parent().add_child(projectile)
 	
 
@@ -240,6 +240,7 @@ func _on_ShootTimer_timeout():
 		projectile.global_position = global_position
 		projectile.direction = direction
 		projectile.z_index = 1
+		projectile.limit = 3
 		projectile.rotation = atan2(direction.y, direction.x)
 		get_parent().add_child(projectile)
 
@@ -264,13 +265,13 @@ func shake_camera():
 	
 
 func _on_Right_body_entered(body):
-	if body is Player:
+	if body is Character:
 		if curr_state == States.ATTACKING and not boss.flip_h:
-			var player = body as Player
+			var player = body as Character
 			player.take_damage(1, self)
 
 func _on_Left_body_entered(body):
-	if body is Player:
+	if body is Character:
 		if curr_state == States.ATTACKING and boss.flip_h:
-			var player = body as Player
+			var player = body as Character
 			player.take_damage(1, self)
