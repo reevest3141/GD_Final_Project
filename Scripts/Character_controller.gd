@@ -47,7 +47,7 @@ func attack(dmg):
 	else:
 		for area in $Hurtbox_right.get_overlapping_areas():
 			if area.get_parent() is Character && area.get_parent() != self || area.get_parent() is Boss:
-				areas.get_parent().take_damage(dmg, self)
+				area.get_parent().take_damage(dmg, self)
 	isAttacking = true
 
 func take_damage(dmg, origin):
