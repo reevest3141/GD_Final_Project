@@ -17,7 +17,14 @@ func _physics_process(delta):
 		velocity = Vector2()
 		return
 	move(Input.get_vector("Left","Right","Up","Down") * speed)
+	if velocity.length() == 0:
+		get_parent().get_node("run").volume_db = -40.0
+	else:
+		get_parent().get_node("run").volume_db = 10.0
+		if(!get_parent().get_node("run").playing):
+			get_parent().get_node("run").play()
 	if Input.is_action_just_pressed("Attack"):
+		get_parent().get_node("attack_audio").play()
 		attack(attack_dmg)
 
 func die():

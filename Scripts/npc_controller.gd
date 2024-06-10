@@ -1,6 +1,5 @@
 extends Character
 class_name NPC
-@onready var player = get_node("/root/World/Game Manager/Player")
 @onready var attack_dmg = 1
 @export var speed = 50
 @onready var range = 150

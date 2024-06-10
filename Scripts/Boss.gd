@@ -270,10 +270,10 @@ func _on_Right_body_entered(body):
 	if body is Player:
 		if curr_state == States.ATTACKING and not boss.flip_h:
 			var player = body as Player
-			player.take_damage(1)
+			player.take_damage(1, self)
 
 func _on_Left_body_entered(body):
 	if body is Player:
 		if curr_state == States.ATTACKING and boss.flip_h:
 			var player = body as Player
-			player.take_damage(1)
+			player.take_damage(1, self)
