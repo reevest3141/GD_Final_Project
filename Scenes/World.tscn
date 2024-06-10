@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
 [ext_resource type="Script" path="res://Scripts/Game Manager.gd" id="2_lbwt5"]
-[ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_0s4nn"]
 [ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/Player.tscn" id="4_8fu4c"]
 [ext_resource type="PackedScene" uid="uid://dj5kpoew8uot0" path="res://Scenes/new_level.tscn" id="5_bqkcu"]
 [ext_resource type="PackedScene" uid="uid://r6clrp4mphuq" path="res://Scenes/forest.tscn" id="6_h3qyo"]
+[ext_resource type="Script" path="res://Scenes/forest.gd" id="6_r7dw7"]
 [ext_resource type="AudioStream" uid="uid://c1mh8fjbwbrdt" path="res://Assets/Sam Video game music.mp3" id="8_e40pm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4xw6"]
@@ -141,25 +141,17 @@ script = ExtResource("2_lbwt5")
 [node name="Player" parent="Game Manager" instance=ExtResource("4_8fu4c")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(138, 84)
-
-[node name="Camera2D" type="Camera2D" parent="Game Manager/Player"]
-zoom = Vector2(5, 5)
-limit_left = -95
-limit_top = -130
-limit_right = 1650
-limit_bottom = 640
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-script = ExtResource("3_0s4nn")
+position = Vector2(143, 91)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Game Manager"]
 stream = ExtResource("8_e40pm")
 autoplay = true
 
-[node name="Forest" parent="Game Manager" instance=ExtResource("6_h3qyo")]
+[node name="Level" type="Node2D" parent="Game Manager"]
 
-[node name="Area2D" parent="Game Manager/Forest" instance=ExtResource("5_bqkcu")]
-position = Vector2(1068, 131)
+[node name="Forest" parent="Game Manager/Level" instance=ExtResource("6_h3qyo")]
+script = ExtResource("6_r7dw7")
 
-[connection signal="body_entered" from="Game Manager/Forest/Area2D" to="Game Manager/Forest/Area2D" method="_on_body_entered"]
+[node name="new_level" parent="Game Manager" instance=ExtResource("5_bqkcu")]
+position = Vector2(1049, 128)
+script = null
