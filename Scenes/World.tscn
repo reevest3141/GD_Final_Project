@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://blgmdm0162wd5" path="res://new_level.tscn" id="5_bqkcu"]
 [ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
 [ext_resource type="PackedScene" uid="uid://ubjw4it14c6h" path="res://Scenes/npc_2.tscn" id="7_wak06"]
+[ext_resource type="AudioStream" uid="uid://c1mh8fjbwbrdt" path="res://Assets/Sam Video game music.mp3" id="8_e40pm"]
 [ext_resource type="PackedScene" uid="uid://dy8vrsjv1038i" path="res://Scenes/Slime.tscn" id="8_fbnpi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4xw6"]
@@ -174,3 +175,7 @@ SQ = true
 position = Vector2(1504, 4)
 isFighting = null
 SQ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Game Manager"]
+stream = ExtResource("8_e40pm")
+autoplay = true

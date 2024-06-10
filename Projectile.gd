@@ -6,7 +6,9 @@ var direction: Vector2
 
 # Reference to the AnimatedSprite node
 @onready var animated_sprite: AnimatedSprite2D = $animations
-var til = 0
+@onready var boom : AudioStreamPlayer2D = $boom
+var ttl = 0
+@export var limit = 2
 
 func _ready():
 	# Start the moving animation
@@ -20,8 +22,8 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-	til += delta
-	if til > 2:
+	ttl += delta
+	if ttl > limit:
 		queue_free()
 		
 
@@ -29,6 +31,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if(body is Player):
+		boom.play()
 		var player = body as Player
 		animated_sprite.play("hit")
 		player.take_damage(1)
