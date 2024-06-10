@@ -16,13 +16,12 @@ size = Vector2(22, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr1k2"]
 size = Vector2(22, 27)
 
-[node name="Orc" type="CharacterBody2D"]
+[node name="orc" type="CharacterBody2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Graphics" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_a1cop")
-animation = &"Attack_2"
-frame = 2
-frame_progress = 0.437814
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]
 visible = false
@@ -46,10 +45,10 @@ visible = false
 position = Vector2(-11, 1)
 shape = SubResource("RectangleShape2D_pkyhx")
 
-[node name="Hurtbox_left2" type="Area2D" parent="."]
+[node name="Hurtbox_right" type="Area2D" parent="."]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_right"]
 visible = false
 position = Vector2(11, 1)
 shape = SubResource("RectangleShape2D_hr1k2")

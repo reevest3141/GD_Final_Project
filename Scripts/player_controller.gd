@@ -21,6 +21,7 @@ func _physics_process(delta):
 		attack(attack_dmg)
 
 func die():
+	get_parent().respawn()
 	get_tree().reload_current_scene()
 
 func heal(amt):

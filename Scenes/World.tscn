@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
-[ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/player.tscn" id="4_8fu4c"]
+[ext_resource type="PackedScene" uid="uid://ciys5say2bvy5" path="res://Scenes/npc_3.tscn" id="2_36ttx"]
+[ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/Player.tscn" id="4_8fu4c"]
 [ext_resource type="PackedScene" uid="uid://blgmdm0162wd5" path="res://new_level.tscn" id="5_bqkcu"]
 [ext_resource type="PackedScene" uid="uid://cl4f03x16svpo" path="res://Scenes/npc_1.tscn" id="5_obl60"]
 [ext_resource type="PackedScene" uid="uid://ubjw4it14c6h" path="res://Scenes/npc_2.tscn" id="7_wak06"]
@@ -138,6 +139,9 @@ region_rect = Rect2(0, 17.8099, 49.8546, 13.2737)
 [node name="Game Manager" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="npc_3" parent="Game Manager" instance=ExtResource("2_36ttx")]
+position = Vector2(194, 109)
+
 [node name="Level1" parent="Game Manager" instance=ExtResource("1_ecf8m")]
 
 [node name="Area2D" parent="Game Manager/Level1" instance=ExtResource("5_bqkcu")]
@@ -154,18 +158,22 @@ position = Vector2(1244, 117)
 
 [node name="Slime" parent="Game Manager" instance=ExtResource("8_fbnpi")]
 position = Vector2(1322, 28)
+isFighting = null
 SQ = true
 
 [node name="Slime2" parent="Game Manager" instance=ExtResource("8_fbnpi")]
 position = Vector2(1428, 85)
+isFighting = null
 SQ = true
 
 [node name="Slime3" parent="Game Manager" instance=ExtResource("8_fbnpi")]
 position = Vector2(1333, 108)
+isFighting = null
 SQ = true
 
 [node name="Slime4" parent="Game Manager" instance=ExtResource("8_fbnpi")]
 position = Vector2(1504, 4)
+isFighting = null
 SQ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Game Manager"]

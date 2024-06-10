@@ -16,12 +16,12 @@ size = Vector2(22, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nf2e"]
 size = Vector2(22, 27)
 
-[node name="Node2D" type="CharacterBody2D"]
+[node name="skeleton" type="CharacterBody2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Graphics" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_x81th")
 animation = &"Idle"
-frame_progress = 0.117743
+autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -40,8 +40,8 @@ shape = SubResource("CapsuleShape2D_8x8je")
 position = Vector2(-11, 1)
 shape = SubResource("RectangleShape2D_i2163")
 
-[node name="Hurtbox_left2" type="Area2D" parent="."]
+[node name="Hurtbox_right" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_left2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox_right"]
 position = Vector2(11, 1)
 shape = SubResource("RectangleShape2D_5nf2e")

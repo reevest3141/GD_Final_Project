@@ -4,6 +4,7 @@ class_name Character
 @export var total_hp = 6
 @onready var current_hp = total_hp
 signal dead
+signal hit(origin)
 var isAttacking = false
 var isHurt = false
 # Called when the node enters the scene tree for the first time.
@@ -45,15 +46,16 @@ func attack(dmg):
 	animations.play("Attack_1")
 	if animations.flip_h:
 		for area in $Hurtbox_left.get_overlapping_areas():
-			if area.get_parent() is Enemy || area.get_parent() is Boss:
-				area.get_parent().take_damage(dmg)
+			if area.get_parent() is Character && area.get_parent() != self || area.get_parent() is Boss:
+				area.get_parent().take_damage(dmg, self)
 	else:
 		for area in $Hurtbox_right.get_overlapping_areas():
-			if area.get_parent() is Enemy || area.get_parent() is Boss:
-				area.get_parent().take_damage(dmg)
+			if area.get_parent() is Character && area.get_parent() != self || area.get_parent() is Boss:
+				area.get_parent().take_damage(dmg, self)
 	isAttacking = true
 
-func take_damage(dmg):
+func take_damage(dmg, origin):
+	hit.emit(origin)
 	if isHurt:
 		return
 	current_hp -= dmg
