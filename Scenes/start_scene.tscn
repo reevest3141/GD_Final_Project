@@ -44,7 +44,21 @@ offset_left = 738.0
 offset_top = 181.0
 offset_right = 1108.0
 offset_bottom = 341.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "In a town ruled by a necromancer, all seems well to the citizens, however, to those less fortunate, his false utopia is a much less inviting place."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+z_index = 5
+offset_left = 736.0
+offset_top = 71.0
+offset_right = 1106.0
+offset_bottom = 231.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Echoes of Inequity"
 horizontal_alignment = 1
 autowrap_mode = 2
 
