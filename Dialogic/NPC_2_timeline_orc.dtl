@@ -1,0 +1,18 @@
+if {Slime_Quest} == true:
+	if {SQ_Complete} == true:
+		npc_2: I gotta say, I'm impressed you pulled it off.
+		set {Slime_Quest} = false
+		[signal arg="SQ_Complete"]
+	else:
+		npc_2: What are you doing? There's still slimes out there.
+elif {Slime_Quest} == false:
+	if {SQ_Complete} == false:
+		npc_2: Hey you! My fields have a slime infestation, think you can take care of it?
+		- Yes [if true]
+			set {Slime_Quest} = true
+			npc_2: Hmph, let's see if you can handle them then.
+		- No [if true]
+			set {Slime_Quest} = false
+			npc_2: Ha! What am I thinking, of course not.
+	else:
+		npc_2: What do you want? I've got no more need for you here.

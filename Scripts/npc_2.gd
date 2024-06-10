@@ -1,4 +1,5 @@
 extends Node2D
+@onready var player = get_node("/root/World/Game Manager/Player")
 var active = false
 
 # Called when the node enters the scene tree for the first time.
@@ -33,5 +34,5 @@ func _input(event):
 		return
 		
 	if event.is_action_pressed("Interact"):
-		var layout = Dialogic.start("NPC_2_timeline")
+		var layout = Dialogic.start("NPC_2_timeline_" + str(player.character.name))
 		layout.register_character(load("res://Dialogic/npc_2.dch"), $Priest)
