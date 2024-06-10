@@ -23,12 +23,14 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={
 "NPC_1": "res://Dialogic/NPC_1.dch",
-"npc_2": "res://Dialogic/npc_2.dch"
+"npc_2": "res://Dialogic/npc_2.dch",
+"npc_3": "res://Dialogic/npc_3.dch"
 }
 directories/dtl_directory={
-"NPC_1_timeline": "res://Dialogic/NPC_1_timeline.dtl",
+"NPC_1_timeline_soldier": "res://Dialogic/NPC_1_timeline_soldier.dtl",
 "NPC_2_timeline_orc": "res://Dialogic/NPC_2_timeline_orc.dtl",
-"NPC_2_timeline_soldier": "res://Dialogic/NPC_2_timeline_soldier.dtl"
+"NPC_2_timeline_soldier": "res://Dialogic/NPC_2_timeline_soldier.dtl",
+"NPC_3_timeline_soldier": "res://Dialogic/NPC_3_timeline_soldier.dtl"
 }
 layout/style_list=["res://Dialogic/New_Style.tres"]
 layout/default_style="res://Dialogic/New_Style.tres"

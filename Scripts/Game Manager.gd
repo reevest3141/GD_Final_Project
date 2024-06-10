@@ -2,7 +2,7 @@ extends Node2D
 @onready var player = get_node("Player")
 var levels = [preload("res://Scenes/forest.tscn"),preload("res://Scenes/town.tscn"),preload("res://Scenes/boss_scene.tscn")]
 var player_spawn = [Vector2(145,90),Vector2(-10,2),Vector2(250,500)]
-var nl_spawn = [Vector2(1000,130),Vector2(1400,50),Vector2(-100,20 0)]
+var nl_spawn = [Vector2(1000,130),Vector2(1400,50),Vector2(-100,200)]
 var cur = 0
 
 func _ready():

@@ -2,6 +2,7 @@ extends Node2D
 @onready var gold_ui = get_node("/root/World/UI/Gold")
 static var current_char = 0
 var char_list = [preload("res://Scenes/soldier.tscn"),preload("res://Scenes/orc.tscn"),preload("res://Scenes/skeleton.tscn")]
+var char_list_upgraded = [preload("res://Scenes/knight.tscn"),preload("res://Scenes/armored_orc.tscn"),preload("res://Scenes/armored_skeleton.tscn")]
 var character
 var gold = 0
 var slimes = 4
@@ -32,12 +33,15 @@ func SQ():
 		Dialogic.VAR.SQ_Complete = true
 
 func _on_dialogic_signal(argument: String):
-	if argument == "Pay for inn":
-		update_gold(-5)
+	if argument.left(3) == "Pay":
+		update_gold(-int(argument[3]))
 		character.heal(character.total_hp)
 	
 	if argument == "SQ_Complete":
 		update_gold(15)
+		
+	if argument == "Upgrade":
+		character = char_list_upgraded[current_char]
 
 func get_character():
 	return character
@@ -47,4 +51,6 @@ func respawn():
 	Dialogic.VAR.SQ_Complete = false
 	slimes = 4
 	current_char += 1
+	if current_char > 2:
+		current_char = 0
 	pass

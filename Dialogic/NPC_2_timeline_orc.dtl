@@ -7,7 +7,7 @@ if {Slime_Quest} == true:
 		npc_2: What are you doing? There's still slimes out there.
 elif {Slime_Quest} == false:
 	if {SQ_Complete} == false:
-		npc_2: Hey you! My fields have a slime infestation, think you can take care of it?
+		npc_2: Hey you! The ruins have a slime infestation, think you can take care of it?
 		- Yes [if true]
 			set {Slime_Quest} = true
 			npc_2: Hmph, let's see if you can handle them then.
