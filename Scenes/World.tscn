@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=19 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
+[ext_resource type="Script" path="res://Scenes/Game Manager.gd" id="2_lbwt5"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="3_0s4nn"]
 [ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/Player.tscn" id="4_8fu4c"]
 [ext_resource type="PackedScene" uid="uid://dj5kpoew8uot0" path="res://Scenes/new_level.tscn" id="5_bqkcu"]
@@ -138,6 +139,7 @@ region_rect = Rect2(0, 17.8099, 49.8546, 13.2737)
 
 [node name="Game Manager" type="Node2D" parent="."]
 y_sort_enabled = true
+script = ExtResource("2_lbwt5")
 
 [node name="Level1" parent="Game Manager" instance=ExtResource("1_ecf8m")]
 y_sort_enabled = true
