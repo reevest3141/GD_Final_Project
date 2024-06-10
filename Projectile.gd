@@ -25,15 +25,16 @@ func _physics_process(delta):
 	ttl += delta
 	if ttl > limit:
 		queue_free()
-		
-
-
 
 func _on_area_2d_body_entered(body):
+	print(boom)
+	#boom.play()
 	if(body is Player):
-		boom.play()
 		var player = body as Player
 		animated_sprite.play("hit")
 		player.take_damage(1)
+		boom.play()
+		queue_free()
+	else:
 		queue_free()
 		

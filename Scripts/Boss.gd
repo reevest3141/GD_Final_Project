@@ -170,11 +170,8 @@ func take_damage(dmg = 1):
 		_on_animation_finished("Hit")
 		transition_to_Death()
 		return
-	print(current_hp)
 	if current_hp % 4 == 0:
 		health_bar.play("Damage_" + str(i))
-		print(current_hp)
-		print(i)
 		i += 1
 		
 	isHurt = true
