@@ -1,5 +1,5 @@
-NPC_1: Hello traveler!
-NPC_1: Would you like to spend 5g for a night at my inn?
+NPC_1: Welcome to my inn, traveler!
+NPC_1: For an adventurer like you, I can give you a discount as thanks for your service! How does 5g for a night sound?
 - Yes [if true]
 	[signal arg="Pay5"]
 - No [if true]

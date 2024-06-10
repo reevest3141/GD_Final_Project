@@ -143,7 +143,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(143, 91)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Game Manager"]
+[node name="Audio" type="AudioStreamPlayer2D" parent="Game Manager"]
 stream = ExtResource("8_e40pm")
 autoplay = true
 

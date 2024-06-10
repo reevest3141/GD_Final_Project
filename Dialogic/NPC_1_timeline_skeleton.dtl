@@ -1,5 +1,5 @@
-NPC_1: Hello traveler!
-NPC_1: Would you like to spend 30g for a night at my inn?
+NPC_1: Hey there skelly!
+NPC_1: Think you can cough up 30g for a night at my inn?
 - Yes [if true]
 	[signal arg="Pay30"]
 - No [if true]

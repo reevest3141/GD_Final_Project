@@ -1,1 +1,5 @@
-npc_3: Hello there adventurer! Would you like to upgrade your gear? It will cost
+npc_3: Hello there adventurer! Would you like to upgrade your gear? I'm sure your weary wares could use it, so I can set you up for 10g.
+- Yes
+	[signal arg="Pay10"]
+	[signal arg="Upgrade"]
+- No
