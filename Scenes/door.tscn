@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://buxodlp8wvoda"]
+
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_q26ng"]
+[ext_resource type="SpriteFrames" uid="uid://cridec1welo01" path="res://Assets/dungeontiles-extended v1.1/door.tres" id="1_x0mym"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a4whm"]
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_q26ng")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_x0mym")
+animation = &"opened"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("CapsuleShape2D_a4whm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
