@@ -261,7 +261,7 @@ func _on_animation_finished(anim_name):
 		boss.stop()
 	
 func shake_camera():
-	camera.start_shake(5, 1) 
+	camera.start_shake(5, 1)
 	
 
 func _on_Right_body_entered(body):

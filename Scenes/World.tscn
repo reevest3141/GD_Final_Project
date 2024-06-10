@@ -148,10 +148,11 @@ stream = ExtResource("8_e40pm")
 autoplay = true
 
 [node name="Level" type="Node2D" parent="Game Manager"]
+y_sort_enabled = true
 
 [node name="Forest" parent="Game Manager/Level" instance=ExtResource("6_h3qyo")]
 script = ExtResource("6_r7dw7")
 
 [node name="new_level" parent="Game Manager" instance=ExtResource("5_bqkcu")]
-position = Vector2(1049, 128)
+position = Vector2(1106, 172)
 script = null
