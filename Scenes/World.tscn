@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnw6fkk6etnf1"]
+[gd_scene load_steps=19 format=3 uid="uid://cnw6fkk6etnf1"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_3t3x5"]
 [ext_resource type="PackedScene" uid="uid://dm470y65lm0n3" path="res://Scenes/level_1.tscn" id="1_ecf8m"]
