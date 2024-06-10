@@ -20,7 +20,7 @@ size = Vector2(22, 27)
 
 [node name="Graphics" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_a1cop")
-animation = &"Idle"
+animation = &"Walk"
 autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]

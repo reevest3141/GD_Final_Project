@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dmruu1ft5glp5"]
 
 [ext_resource type="Texture2D" uid="uid://cnsvrcsxail1x" path="res://Assets/Pixel UI pack 3/04.png" id="1_qcuc1"]
-[ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/player.tscn" id="2_mmy4m"]
+[ext_resource type="PackedScene" uid="uid://cmq3qiu5vlske" path="res://Scenes/Player.tscn" id="2_mmy4m"]
 [ext_resource type="PackedScene" uid="uid://bv6d4nv16exg5" path="res://Scenes/boss_scene.tscn" id="6_dkg8s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4xw6"]
