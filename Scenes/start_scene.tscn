@@ -38,4 +38,14 @@ Interact: E
 Attack: Click/Space"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="."]
+z_index = 5
+offset_left = 738.0
+offset_top = 181.0
+offset_right = 1108.0
+offset_bottom = 341.0
+text = "In a town ruled by a necromancer, all seems well to the citizens, however, to those less fortunate, his false utopia is a much less inviting place."
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

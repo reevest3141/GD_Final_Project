@@ -41,7 +41,10 @@ func _on_dialogic_signal(argument: String):
 		update_gold(15)
 		
 	if argument == "Upgrade":
-		character = char_list_upgraded[current_char]
+		character.queue_free()
+		character = char_list_upgraded[current_char].instantiate()
+		character.set_script(load("res://Scripts/player_controller.gd"))
+		call_deferred("add_child", character)
 
 func get_character():
 	return character
