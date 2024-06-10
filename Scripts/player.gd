@@ -34,7 +34,7 @@ func SQ():
 
 func _on_dialogic_signal(argument: String):
 	if argument.left(3) == "Pay":
-		update_gold(-int(argument[3]))
+		update_gold(-int(argument.right(-3)))
 		character.heal(character.total_hp)
 	
 	if argument == "SQ_Complete":
