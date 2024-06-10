@@ -1,5 +1,11 @@
-extends Node2D
+extends TileMap
 
+func GetTilemapBounds() -> Array[Vector2]:
+	var bounds : Array[Vector2] = []
+	bounds.append(
+		Vector2(get_used_rect().position * rendering_quadrant_size)
+	)
+	return bounds
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
