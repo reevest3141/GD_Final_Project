@@ -12,6 +12,8 @@ func change_scene(body):
 	print("theo")
 	$Level.get_child(0).queue_free()
 	cur += 1
+	if(cur == 2):
+		$Audio.stop()
 	call_deferred("setup_scene")
 	
 func setup_scene():
