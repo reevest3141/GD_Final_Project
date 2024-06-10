@@ -27,8 +27,11 @@ directories/dch_directory={
 "npc_3": "res://Dialogic/npc_3.dch"
 }
 directories/dtl_directory={
+"NPC_1_timeline_orc": "res://Dialogic/NPC_1_timeline_orc.dtl",
+"NPC_1_timeline_skeleton": "res://Dialogic/NPC_1_timeline_skeleton.dtl",
 "NPC_1_timeline_soldier": "res://Dialogic/NPC_1_timeline_soldier.dtl",
 "NPC_2_timeline_orc": "res://Dialogic/NPC_2_timeline_orc.dtl",
+"NPC_2_timeline_skeleton": "res://Dialogic/NPC_2_timeline_skeleton.dtl",
 "NPC_2_timeline_soldier": "res://Dialogic/NPC_2_timeline_soldier.dtl",
 "NPC_3_timeline_soldier": "res://Dialogic/NPC_3_timeline_soldier.dtl"
 }
