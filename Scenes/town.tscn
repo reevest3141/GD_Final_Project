@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bilmy1j4nwnu4"]
+[gd_scene load_steps=10 format=3 uid="uid://bilmy1j4nwnu4"]
 
 [ext_resource type="Texture2D" uid="uid://t1e2h2vrow2o" path="res://Assets/Houses_Pack/houses.png" id="1_txk7e"]
 [ext_resource type="Texture2D" uid="uid://crrcejw3qfchm" path="res://Assets/Atlas/terrain_atlas.png" id="2_rfnqe"]
