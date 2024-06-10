@@ -34,6 +34,6 @@ func _on_area_2d_body_entered(body):
 		boom.play()
 		var player = body as Player
 		animated_sprite.play("hit")
-		player.take_damage(1)
+		player.take_damage(1, self)
 		queue_free()
 		
