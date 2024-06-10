@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Boss.gd" id="1_4tbju"]
 [ext_resource type="SpriteFrames" uid="uid://bkvf0hlf0cpfq" path="res://Assets/KingAnimations/king_frames.tres" id="2_jk07v"]
-[ext_resource type="SpriteFrames" uid="uid://dosox71v3u74b" path="res://Assets/KingAnimations/boss_health.tres" id="3_o7ndv"]
+[ext_resource type="SpriteFrames" uid="uid://dvj24o8pw22um" path="res://Assets/KingAnimations/boss_health.tres" id="3_o7ndv"]
 [ext_resource type="AudioStream" uid="uid://4cj54inhmmvv" path="res://Assets/swing-whoosh-10-198504.mp3" id="4_vm775"]
 [ext_resource type="AudioStream" uid="uid://bgaq5a6br4lcm" path="res://Assets/hurt_c_08-102842.mp3" id="5_m2djf"]
 
@@ -62,8 +62,8 @@ stream = ExtResource("5_m2djf")
 
 [connection signal="animation_finished" from="Graphics" to="." method="_on_animation_finished"]
 [connection signal="animation_finished" from="Graphics" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Right_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Right_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Right_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Left_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

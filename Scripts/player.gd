@@ -1,8 +1,18 @@
 extends Node2D
 @onready var gold_ui = get_node("/root/World/UI/Gold")
-@onready var character = get_child(0)
+static var current_char = 0
+var char_list = [preload("res://Scenes/soldier.tscn"),preload("res://Scenes/orc.tscn"),preload("res://Scenes/skeleton.tscn")]
+var character
 var gold = 0
 var slimes = 4
+
+func _enter_tree():
+	character = char_list[current_char].instantiate()
+	character.set_script(load("res://Scripts/player_controller.gd"))
+	add_child(character)
+	var new_cam = Camera2D.new()
+	new_cam.set_script(load("res://Scripts/Camera2D.gd"))
+	character.add_child(new_cam)
 
 func _ready():
 	gold_ui.set_text("Gold: " + str(gold))
@@ -24,3 +34,13 @@ func _on_dialogic_signal(argument: String):
 	
 	if argument == "SQ_Complete":
 		update_gold(15)
+
+func get_character():
+	return character
+
+func respawn():
+	Dialogic.VAR.Slime_Quest = false
+	Dialogic.VAR.SQ_Complete = false
+	slimes = 4
+	current_char += 1
+	pass

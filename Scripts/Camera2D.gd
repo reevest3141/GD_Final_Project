@@ -1,8 +1,11 @@
 extends Camera2D
-@onready var tilemap = $TileMap
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	pass
+
+func UpdateLimits(bounds: Array[Vector2]) -> void:
+	limit_left
+	pass  
 
 var shake_amount = 0
 var shake_timer = 0

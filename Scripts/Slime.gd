@@ -1,6 +1,6 @@
 extends CharacterBody2D
 class_name Enemy
-@onready var player_character = get_node("/root/World/Game Manager/Player")
+@onready var player = get_node("/root/World/Game Manager/Player")
 @export var speed = 100
 @export var damage = 2
 @export var total_hp = 4
@@ -14,8 +14,9 @@ var isAttacking = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	$Hurtbox_right.body_entered.connect(_on_hitbox_body_entered)
+	$Hurtbox_left.body_entered.connect(_on_hitbox_body_entered)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,7 +28,7 @@ func _physics_process(delta):
 	animate_enemy()
 
 func update_velocity():
-	target = player_character.get_global_position()
+	target = player.character.get_global_position()
 	velocity = position.direction_to(target) * speed
 	return position.distance_to(target)
 
@@ -38,12 +39,10 @@ func take_damage(dmg):
 	current_hp -= dmg
 	animations.play("Hurt")
 	isHurt = true
-	await animations.animation_finished
-	isHurt = false
 	if current_hp <= 0:
-		player_character.update_gold(gold)
+		player.update_gold(gold)
 		if SQ:
-			player_character.SQ()
+			player.SQ()
 		queue_free()
 
 
@@ -51,8 +50,6 @@ func _on_hitbox_body_entered(body):
 	if body is Player && !isHurt:
 		animations.play("Attack")
 		isAttacking = true
-		await animations.animation_finished
-		isAttacking = false
 		body.take_damage(damage)
 	pass # Replace with function body.
 
@@ -60,7 +57,11 @@ func _on_hitbox_body_entered(body):
 func animate_enemy():
 	animations.flip_h = true if velocity.x < 0 else false if velocity.x > 0 else animations.flip_h
 	if (isAttacking || isHurt):
-		pass
+		if animations.frame_progress == 1:
+			isAttacking = false
+			isHurt = false
+		else:
+			return
 	elif velocity.length() == 0:
 		animations.play("Idle")
 	else:
